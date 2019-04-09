@@ -1,4 +1,8 @@
 import { configure } from '@storybook/react';
+import { addParameters } from '@storybook/react';
+
+addParameters({ viewport: {defaultViewport: 'iphone6'} });
+
 
 const req = require.context(
     '../src/components',

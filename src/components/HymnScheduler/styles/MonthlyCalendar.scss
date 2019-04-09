@@ -1,0 +1,31 @@
+
+.monthly-calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    .month-calendar--content {
+        width: 100%;
+        .month-calendar--month {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 5vh 0;
+            .month-calendar--month__year {
+                font-size: 2em;
+            }
+            .month-calendar--month__month-num {
+                font-size: 4em;
+            }
+            .month-calendar--month__month-str {
+                font-size: 2em;
+            }
+        }
+        .month-calendar--dates {
+            display: grid;
+            grid-template: repeat(7, auto) / repeat(7, auto);
+            width: 100%;
+        }
+    }
+}
+
