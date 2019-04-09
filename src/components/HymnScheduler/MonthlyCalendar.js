@@ -55,9 +55,10 @@ class MonthlyCalendar extends Component {
   };
 
   render() {
-    const Fade = posed.div({
-      enter: { opacity: 1 },
-      exit: { opacity: 0 }
+    const Box = posed.div({
+      pressable: true,
+      init: { scale: 1 },
+      press: { scale: 0.8 }
     });
     const renderMonth = data => {
       const index = new Date(data.year, data.month, data.date);
@@ -73,25 +74,27 @@ class MonthlyCalendar extends Component {
       ];
       return (
         <>
-          <div
-            className="monthly-calendar--navigation__prev"
-            onClick={this.handlePrev}
-          >
-            이전
+          <div className="monthly-calendar--navigation">
+            <Box
+              className="monthly-calendar--navigation__prev"
+              onClick={this.handlePrev}
+            >
+              이전
+            </Box>
+            <Box
+              className="monthly-calendar--navigation__next"
+              onClick={this.handleNext}
+            >
+              다음
+            </Box>
           </div>
-          <div
-            className="monthly-calendar--navigation__next"
-            onClick={this.handleNext}
-          >
-            다음
-          </div>
-          <div className="month-calendar--content">
-            <div className="month-calendar--month">
-              <div className="month-calendar--month__year">{data.year}</div>
-              <div className="month-calendar--month__month-num">
+          <div className="monthly-calendar--content">
+            <div className="monthly-calendar--month">
+              <div className="monthly-calendar--month__year">{data.year}</div>
+              <div className="monthly-calendar--month__month-num">
                 {data.month + 1}
               </div>
-              <div className="month-calendar--month__month-str">
+              <div className="monthly-calendar--month__month-str">
                 {
                   [
                     "JAN",
@@ -110,10 +113,10 @@ class MonthlyCalendar extends Component {
                 }
               </div>
             </div>
-            <div className="month-calendar--dates">
+            <div className="monthly-calendar--dates">
               {["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"].map(
                 (day, idx) => (
-                  <div className="month-calendar--dates__days" key={idx}>
+                  <div className="monthly-calendar--dates__days" key={idx}>
                     {day}
                   </div>
                 )
@@ -138,10 +141,10 @@ class MonthlyCalendar extends Component {
                 ))}
             </div>
           </div>
-          
         </>
       );
     };
+
     return (
       <div className="monthly-calendar">
         {this.state.monthIdx.year === this.props.current.year &&
