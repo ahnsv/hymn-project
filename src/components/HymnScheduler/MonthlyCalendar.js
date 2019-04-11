@@ -23,7 +23,7 @@ import "./styles/MonthlyCalendar.scss";
 
 const YearsDialog = props => {
   const current = props.current.year;
-  const clickHandler = props.passedClick
+  const clickHandler = props.passedClick;
   /**
    * Get decade range
    * @example
@@ -49,7 +49,11 @@ const YearsDialog = props => {
             </div>
           );
         }
-        return <div className="year-button" key={idx} onClick={clickHandler}>{yr}</div>;
+        return (
+          <div className="year-button" key={idx} onClick={clickHandler}>
+            {yr}
+          </div>
+        );
       })}
     </div>
   );
@@ -57,18 +61,22 @@ const YearsDialog = props => {
 
 const MonthsDialog = props => {
   const current = props.current.month;
-  const clickHandler = props.passedClick
+  const clickHandler = props.passedClick;
   return (
     <div className="months-dialog">
       {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((mth, idx) => {
-        if (mth === current+1) {
+        if (mth === current + 1) {
           return (
             <div className="current-month" key={idx} onClick={clickHandler}>
               {mth}
             </div>
           );
         }
-        return <div className="month-button" key={idx} onClick={clickHandler}>{mth}</div>;
+        return (
+          <div className="month-button" key={idx} onClick={clickHandler}>
+            {mth}
+          </div>
+        );
       })}
     </div>
   );
@@ -83,7 +91,8 @@ class MonthlyCalendar extends Component {
     },
     inProp: false,
     isYearsDialogOpen: false,
-    isMonthsDialogOpen: false
+    isMonthsDialogOpen: false,
+    select: []
   };
 
   handleNext = () => {
@@ -121,16 +130,31 @@ class MonthlyCalendar extends Component {
       isYearsDialogOpen: true
     });
   };
-  
+
   handleMonthClick = () => {
     this.setState({
       isMonthsDialogOpen: true
     });
   };
 
-  setIndex = (e) => {
+  handleDayClick = (e) => {
+    e.currentTarget.classList.add("selected")
+    const index = parseInt(e.currentTarget.innerText)
+    this.setState({
+      select: [...this.state.select, {
+        year: this.state.monthIdx.year,
+        month: this.state.monthIdx.month,
+        day: index
+      }]
+    })
+  }
+
+  setIndex = e => {
     e.preventDefault();
-    if (e.currentTarget.className === 'year-button' || e.currentTarget.className === 'current-year') {
+    if (
+      e.currentTarget.className === "year-button" ||
+      e.currentTarget.className === "current-year"
+    ) {
       // when it is year button, set year and move on to months
       this.setState({
         monthIdx: {
@@ -139,18 +163,17 @@ class MonthlyCalendar extends Component {
         },
         isMonthsDialogOpen: true,
         isYearsDialogOpen: false
-      })
-    }
-    else {
+      });
+    } else {
       this.setState({
         monthIdx: {
           ...this.state.monthIdx,
           month: parseInt(e.currentTarget.innerText) - 1
         },
         isMonthsDialogOpen: false
-      })
+      });
     }
-  }
+  };
 
   render() {
     const renderMonth = data => {
@@ -173,10 +196,16 @@ class MonthlyCalendar extends Component {
           >
             {data.year}
           </div>
-          <div className="monthly-calendar--month__month-num" onClick={this.handleMonthClick}>
+          <div
+            className="monthly-calendar--month__month-num"
+            onClick={this.handleMonthClick}
+          >
             {data.month + 1}
           </div>
-          <div className="monthly-calendar--month__month-str" onClick={this.handleMonthClick}>
+          <div
+            className="monthly-calendar--month__month-str"
+            onClick={this.handleMonthClick}
+          >
             {
               [
                 "JAN",
@@ -243,7 +272,7 @@ class MonthlyCalendar extends Component {
                       key={key}
                       className={`monthly-calendar--dates__day${key} ${
                         key == day ? "today" : ""
-                      }`}
+                      }`} onClick={this.handleDayClick}
                     >
                       {day}
                     </div>
@@ -257,18 +286,31 @@ class MonthlyCalendar extends Component {
 
     return (
       <div className="monthly-calendar">
-        {/* <Transition in={this.state.isYearsDialogOpen} timeout={d}> */}
-          {this.state.isYearsDialogOpen && (
-            <YearsDialog current={this.state.monthIdx} passedClick={this.setIndex}/>
-          )}
-        {/* </Transition> */}
+        {this.state.isYearsDialogOpen && (
+          <CSSTransition
+            in={this.state.isYearsDialogOpen}
+            timeout={300}
+            classNames="monthly-dialog"
+          >
+            <YearsDialog
+              current={this.state.monthIdx}
+              passedClick={this.setIndex}
+            />
+          </CSSTransition>
+        )}
         {this.state.isMonthsDialogOpen && (
-          <MonthsDialog current={this.state.monthIdx} passedClick={this.setIndex}/>
+          <MonthsDialog
+            current={this.state.monthIdx}
+            passedClick={this.setIndex}
+          />
         )}
         {this.state.monthIdx.year === this.props.current.year &&
         this.state.monthIdx.month === this.props.current.month
           ? renderMonth(this.props.current)
           : renderMonth(this.state.monthIdx)}
+        {
+          (this.state.select && this.state.select.length === 1) && <div className="daily-schedule">Hi</div>
+        }
       </div>
     );
   }

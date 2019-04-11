@@ -1,4 +1,9 @@
+@import './MonthsDialog.scss';
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
+
+
 .monthly-calendar {
+  font-family: 'Nanum Square', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,6 +67,9 @@
       }
       .monthly-calendar--dates__days {
         font-weight: bold;
+      }
+      .selected {
+        background: yellow;
       }
     }
   }
