@@ -7,8 +7,8 @@
     "node-sass": "^4.11.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-pose": "^4.0.8",
     "react-scripts": "2.1.8",
+    "react-transition-group": "^2.9.0",
     "recompose": "^0.30.0"
   },
   "scripts": {
