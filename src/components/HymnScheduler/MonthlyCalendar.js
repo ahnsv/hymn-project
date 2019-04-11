@@ -92,7 +92,8 @@ class MonthlyCalendar extends Component {
     inProp: false,
     isYearsDialogOpen: false,
     isMonthsDialogOpen: false,
-    select: []
+    // TODO: manage select state with MobX?
+    select: [],
   };
 
   handleNext = () => {
@@ -137,17 +138,23 @@ class MonthlyCalendar extends Component {
     });
   };
 
-  handleDayClick = (e) => {
-    e.currentTarget.classList.add("selected")
-    const index = parseInt(e.currentTarget.innerText)
-    this.setState({
-      select: [...this.state.select, {
-        year: this.state.monthIdx.year,
-        month: this.state.monthIdx.month,
-        day: index
-      }]
+  handleDayClick = e => {
+    // TODO: Make range work
+    // Hypothesis 1: first -> single, second -> range (done)
+    // Hypothesis 2: nth click check
+    e.currentTarget.classList.add("selected");
+    const index = parseInt(e.currentTarget.innerText);
+    const selections = this.state.select;
+    const res = []
+    for (let i = 0; i < selections.length; i += 2) {
+      res.push(selections.slice(i, i+2))
+    }
+    res.forEach(s => {
+      if (s.length !== 2) {
+        
+      }
     })
-  }
+  };
 
   setIndex = e => {
     e.preventDefault();
@@ -272,7 +279,8 @@ class MonthlyCalendar extends Component {
                       key={key}
                       className={`monthly-calendar--dates__day${key} ${
                         key == day ? "today" : ""
-                      }`} onClick={this.handleDayClick}
+                      }`}
+                      onClick={this.handleDayClick.bind(this)}
                     >
                       {day}
                     </div>
@@ -308,9 +316,9 @@ class MonthlyCalendar extends Component {
         this.state.monthIdx.month === this.props.current.month
           ? renderMonth(this.props.current)
           : renderMonth(this.state.monthIdx)}
-        {
-          (this.state.select && this.state.select.length === 1) && <div className="daily-schedule">Hi</div>
-        }
+        {this.state.select && this.state.select.length === 1 && (
+          <div className="daily-schedule">Hi</div>
+        )}
       </div>
     );
   }

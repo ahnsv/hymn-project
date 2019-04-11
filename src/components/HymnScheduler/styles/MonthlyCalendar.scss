@@ -1,9 +1,7 @@
-@import './MonthsDialog.scss';
-@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
-
+@import "./MonthsDialog.scss";
 
 .monthly-calendar {
-  font-family: 'Nanum Square', sans-serif;
+  font-family: "Nanum Square", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,10 +20,16 @@
       justify-content: center;
       border-radius: 10px;
       margin: 5vw;
+      font-size: 2em;
+      font-weight: bold;
+    }
+    div:hover {
       box-shadow: 0 0 2px black;
     }
-    .current-year, .current-month {
+    .current-year,
+    .current-month {
       background: lightskyblue;
+      color: white;
     }
   }
   .monthly-calendar--navigation {
@@ -64,6 +68,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        border-radius: 10px;
       }
       .monthly-calendar--dates__days {
         font-weight: bold;
