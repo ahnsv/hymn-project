@@ -18,5 +18,6 @@ const withDefaultProps = defaultProps({
         month: getMonth(today),
         date: getDate(today),
         day: getDay(today)
-    }
+    },
+    focused: false
 })

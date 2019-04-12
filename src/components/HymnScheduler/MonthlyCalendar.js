@@ -20,6 +20,16 @@ import {
   CSSTransition
 } from "react-transition-group";
 import "./styles/MonthlyCalendar.scss";
+import _ from 'lodash'
+
+export const decadeRange = i => {
+  const [rangeIdx, rangeEndIdx] = [i - (i % 10), i - (i % 10) + 9];
+  const result = [];
+  for (let j = rangeIdx; j <= rangeEndIdx; j++) {
+    result.push(j);
+  }
+  return result;
+};
 
 const YearsDialog = props => {
   const current = props.current.year;
@@ -31,17 +41,9 @@ const YearsDialog = props => {
    * @param {number} i
    * @returns {number[]}
    */
-  const range = i => {
-    const [rangeIdx, rangeEndIdx] = [i - (i % 10), i - (i % 10) + 9];
-    const result = [];
-    for (let j = rangeIdx; j <= rangeEndIdx; j++) {
-      result.push(j);
-    }
-    return result;
-  };
   return (
     <div className="year-dialog">
-      {range(current).map((yr, idx) => {
+      {decadeRange(current).map((yr, idx) => {
         if (yr === current) {
           return (
             <div className="current-year" key={idx} onClick={clickHandler}>
@@ -82,6 +84,27 @@ const MonthsDialog = props => {
   );
 };
 
+class DaysDialog extends React.Component {
+  state = {
+    index: this.props.current.date
+  }
+
+  render() {
+    const {year, month, date} = this.props.current
+    const days = Array.apply(null, {length: getDaysInMonth(new Date(year, month, date))}).map(Number.call, Number)
+    return (
+      <div className="days-dialog">
+        <div className="days-scroll">
+          { days.map((d, idx) => <div key={idx}>{d+1}</div>)}
+        </div>
+        <div className="days-schedule">
+          TODOs
+        </div>
+      </div>
+    )
+  }
+}
+
 class MonthlyCalendar extends Component {
   state = {
     monthIdx: {
@@ -93,8 +116,11 @@ class MonthlyCalendar extends Component {
     isYearsDialogOpen: false,
     isMonthsDialogOpen: false,
     // TODO: manage select state with MobX?
-    select: [],
+    selected: {},
   };
+  // refs
+  dates = []
+  datesWrapper = ''
 
   handleNext = () => {
     this.setState({
@@ -107,7 +133,8 @@ class MonthlyCalendar extends Component {
           this.state.monthIdx.month >= 11 ? 0 : this.state.monthIdx.month + 1,
         date: 1
       },
-      inProp: !this.state.inProp
+      inProp: !this.state.inProp,
+      selected: {}
     });
   };
 
@@ -122,7 +149,8 @@ class MonthlyCalendar extends Component {
           this.state.monthIdx.month <= 0 ? 11 : this.state.monthIdx.month - 1,
         date: 1
       },
-      inProp: !this.state.inProp
+      inProp: !this.state.inProp,
+      selected: {}
     });
   };
 
@@ -140,21 +168,42 @@ class MonthlyCalendar extends Component {
 
   handleDayClick = e => {
     // TODO: Make range work
-    // Hypothesis 1: first -> single, second -> range (done)
-    // Hypothesis 2: nth click check
-    e.currentTarget.classList.add("selected");
-    const index = parseInt(e.currentTarget.innerText);
-    const selections = this.state.select;
-    const res = []
-    for (let i = 0; i < selections.length; i += 2) {
-      res.push(selections.slice(i, i+2))
+    const selected = JSON.stringify(this.state.selected)
+    const payload = {
+      year: this.state.monthIdx.year,
+      month: this.state.monthIdx.month,
+      day: parseInt(e.currentTarget.innerText)
     }
-    res.forEach(s => {
-      if (s.length !== 2) {
-        
+    
+    if (selected === JSON.stringify({})) {
+      this.setState({
+        selected: payload
+      })
+      e.currentTarget.classList.toggle("selected");
+      return;
+    }
+    if (selected === JSON.stringify(payload)) return;
+    // toggle range
+    const range = [this.state.selected, payload]
+    this.dates.filter(d => d !== null)
+    .filter(d => ( d.classList && !d.classList.contains('prev')
+     && !d.classList.contains('next')) 
+     && range[0].day <= parseInt(d.innerText) 
+     && range[1].day >= parseInt(d.innerText))
+    .forEach(d => {
+      if (d.classList.contains('selected')) {
+        d.classList.remove('selected')
+        d.classList.add('in-range')
       }
+      d.classList.add('in-range')
     })
+    this.handleFocus(payload)
   };
+  
+  findToday = () => {
+    const today = getDate(new Date())
+    
+  }
 
   setIndex = e => {
     e.preventDefault();
@@ -181,6 +230,20 @@ class MonthlyCalendar extends Component {
       });
     }
   };
+
+  handleFocus(payload) {
+    const rows = _.chunk(this.dates, 7)
+    const selected = this.state.selected
+    // TODO: range?
+    // find row(s) including selected or in range
+    if (JSON.stringify(selected) === JSON.stringify({})) {
+      return;
+    }
+    const filtered = rows.filter(r => (r !== null)).filter(r => (r !== null) &&
+      !(parseInt(r[0].innerText) <= selected.day && parseInt(r[r.length-1].innerText) >= selected.day) && 
+    !(parseInt(r[0].innerText) <= payload.day && parseInt(r[r.length-1].innerText) >= payload.day))
+    filtered.forEach(d => d.forEach(element => element.classList.toggle('unfocused')))
+  }
 
   render() {
     const renderMonth = data => {
@@ -232,6 +295,8 @@ class MonthlyCalendar extends Component {
           </div>
         </div>
       );
+      let counter = 0
+      let refCounter = 0
       return (
         <>
           <div className="monthly-calendar--navigation">
@@ -258,12 +323,20 @@ class MonthlyCalendar extends Component {
               <div className="monthly-calendar--dates">
                 {["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"].map(
                   (day, idx) => (
-                    <div className="monthly-calendar--dates__days" key={idx}>
+                    <div className="monthly-calendar--dates__days">
                       {day}
                     </div>
                   )
                 )}
-                {head_days
+                {head_days.map((day, key) => (
+                    <div
+                      className={`monthly-calendar--dates__day prev`}
+                      ref={(ref) => this.dates[counter++] = ref}
+                      onClick={this.handleDayClick.bind(this)}
+                    >
+                      {day}
+                    </div>
+                  ))
                   .concat(
                     [
                       ...Array(
@@ -271,20 +344,26 @@ class MonthlyCalendar extends Component {
                           new Date(data.year, data.month, data.date)
                         )
                       ).keys()
-                    ].map(i => i + 1)
+                    ].map(i => i + 1).map((day, key) => (
+                      <div
+                        className={`monthly-calendar--dates__day${key}`}
+                        ref={(ref) => this.dates[counter++] = ref}
+                        onClick={this.handleDayClick.bind(this)}
+                      >
+                        {day}
+                      </div>
+                    ))
                   )
-                  .concat(tail_days)
-                  .map((day, key) => (
+                  .concat(tail_days.map((day, key) => (
                     <div
-                      key={key}
-                      className={`monthly-calendar--dates__day${key} ${
-                        key == day ? "today" : ""
-                      }`}
+                      className={`monthly-calendar--dates__day next`}
+                      ref={(ref) => this.dates[counter++] = ref}
                       onClick={this.handleDayClick.bind(this)}
                     >
                       {day}
-                    </div>
-                  ))}
+                    </div> 
+                  )))
+                  }
               </div>
             </div>
           </CSSTransition>
@@ -316,9 +395,9 @@ class MonthlyCalendar extends Component {
         this.state.monthIdx.month === this.props.current.month
           ? renderMonth(this.props.current)
           : renderMonth(this.state.monthIdx)}
-        {this.state.select && this.state.select.length === 1 && (
-          <div className="daily-schedule">Hi</div>
-        )}
+        {/* {this.state.selected.day  && (
+          <DaysDialog current={this.state.monthIdx}/>
+        )} */}
       </div>
     );
   }
@@ -330,7 +409,8 @@ const withDefaultProps = defaultProps({
     month: getMonth(today),
     date: getDate(today),
     day: getDay(today)
-  }
+  },
+  today: new Date()
 });
 
 export default withDefaultProps(MonthlyCalendar);
