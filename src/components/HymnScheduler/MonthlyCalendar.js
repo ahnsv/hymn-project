@@ -168,6 +168,11 @@ class MonthlyCalendar extends Component {
 
   handleDayClick = e => {
     // TODO: Make range work
+    if (document.querySelector('.in-range')) {
+      document.querySelectorAll('.in-range').forEach(e => e.classList.remove('in-range'))
+      document.querySelectorAll('.unfocused').forEach(e => e.classList.remove('unfocused'))
+      return;
+    }
     const selected = JSON.stringify(this.state.selected)
     const payload = {
       year: this.state.monthIdx.year,
@@ -239,10 +244,21 @@ class MonthlyCalendar extends Component {
     if (JSON.stringify(selected) === JSON.stringify({})) {
       return;
     }
-    const filtered = rows.filter(r => (r !== null)).filter(r => (r !== null) &&
-      !(parseInt(r[0].innerText) <= selected.day && parseInt(r[r.length-1].innerText) >= selected.day) && 
-    !(parseInt(r[0].innerText) <= payload.day && parseInt(r[r.length-1].innerText) >= payload.day))
+    const range = (start, end) => Array(end - start + 1).fill().map((_, idx) => start + idx)
+    const cellRange = (selected > payload) ? range(payload.day, selected.day) : range(selected.day, payload.day)
+    const filtered = rows.filter(r => !r.some(el => cellRange.includes(parseInt(el.innerText))))
     filtered.forEach(d => d.forEach(element => element.classList.toggle('unfocused')))
+    this.setState({
+      selected: {}
+    })
+  }
+
+  handleUnFocus() {
+
+  }
+
+  copyCells() {
+    
   }
 
   render() {
@@ -323,46 +339,30 @@ class MonthlyCalendar extends Component {
               <div className="monthly-calendar--dates">
                 {["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"].map(
                   (day, idx) => (
-                    <div className="monthly-calendar--dates__days">
+                    <div className="monthly-calendar--dates__days" key={idx}>
                       {day}
                     </div>
                   )
                 )}
-                {head_days.map((day, key) => (
-                    <div
-                      className={`monthly-calendar--dates__day prev`}
-                      ref={(ref) => this.dates[counter++] = ref}
-                      onClick={this.handleDayClick.bind(this)}
-                    >
-                      {day}
-                    </div>
-                  ))
-                  .concat(
+                {
                     [
-                      ...Array(
+                      ...head_days,
+                      ...[...Array(
                         getDaysInMonth(
                           new Date(data.year, data.month, data.date)
                         )
-                      ).keys()
-                    ].map(i => i + 1).map((day, key) => (
+                      ).keys()].map(d => d+1),
+                      ...tail_days
+                    ].map((day, key) => (
                       <div
                         className={`monthly-calendar--dates__day${key}`}
-                        ref={(ref) => this.dates[counter++] = ref}
+                        key={key}
+                        ref={(ref) => this.dates[key] = ref}
                         onClick={this.handleDayClick.bind(this)}
                       >
                         {day}
                       </div>
                     ))
-                  )
-                  .concat(tail_days.map((day, key) => (
-                    <div
-                      className={`monthly-calendar--dates__day next`}
-                      ref={(ref) => this.dates[counter++] = ref}
-                      onClick={this.handleDayClick.bind(this)}
-                    >
-                      {day}
-                    </div> 
-                  )))
                   }
               </div>
             </div>
