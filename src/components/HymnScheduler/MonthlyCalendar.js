@@ -21,6 +21,7 @@ import {
 } from "react-transition-group";
 import "./styles/MonthlyCalendar.scss";
 import _ from 'lodash'
+import { get } from "http";
 
 export const decadeRange = i => {
   const [rangeIdx, rangeEndIdx] = [i - (i % 10), i - (i % 10) + 9];
@@ -30,6 +31,16 @@ export const decadeRange = i => {
   }
   return result;
 };
+
+function cleanDOM() {
+  if (document.querySelector('.in-range') || document.querySelector('.selected') || document.querySelectorAll('.today')) {
+    document.querySelectorAll('.in-range').forEach(e => e.classList.remove('in-range'))
+    document.querySelectorAll('.selected').forEach(e => e.classList.remove('selected'))
+    document.querySelectorAll('.unfocused').forEach(e => e.classList.remove('unfocused'))
+    document.querySelectorAll('.today').forEach(e => e.classList.remove('today'))
+    return;
+  }
+}
 
 const YearsDialog = props => {
   const current = props.current.year;
@@ -136,6 +147,7 @@ class MonthlyCalendar extends Component {
       inProp: !this.state.inProp,
       selected: {}
     });
+    cleanDOM()
   };
 
   handlePrev = () => {
@@ -152,18 +164,23 @@ class MonthlyCalendar extends Component {
       inProp: !this.state.inProp,
       selected: {}
     });
+    cleanDOM()
   };
 
   handleYearClick = () => {
+    cleanDOM()
     this.setState({
       isYearsDialogOpen: true
     });
+    this.findToday()
   };
-
+  
   handleMonthClick = () => {
+    cleanDOM()
     this.setState({
       isMonthsDialogOpen: true
     });
+    this.findToday()
   };
 
   handleDayClick = e => {
@@ -187,7 +204,14 @@ class MonthlyCalendar extends Component {
       e.currentTarget.classList.toggle("selected");
       return;
     }
-    if (selected === JSON.stringify(payload)) return;
+    if (selected === JSON.stringify(payload)) {
+      this.setState({
+        selected: {}
+      })
+      document.querySelector('.selected').classList.remove('selected')
+
+      return;
+    }
     // toggle range
     const range = [this.state.selected, payload]
     this.dates.filter(d => d !== null)
@@ -206,8 +230,12 @@ class MonthlyCalendar extends Component {
   };
   
   findToday = () => {
-    const today = getDate(new Date())
-    
+    const today = this.props.today
+    if (document.querySelector('.monthly-calendar--month__year').innerText === getYear(today).toString() && document.querySelector('.monthly-calendar--month__month-num').innerText === String(getMonth(today) + 1)) {
+      const dom = document.querySelector(`.monthly-calendar--dates__day${getDate(today)}`)
+      dom.classList.add('today')
+
+    }
   }
 
   setIndex = e => {
@@ -237,10 +265,8 @@ class MonthlyCalendar extends Component {
   };
 
   handleFocus(payload) {
-    const rows = _.chunk(this.dates, 7)
+    const rows = _.chunk(this.dates.filter(d => d !== null), 7)
     const selected = this.state.selected
-    // TODO: range?
-    // find row(s) including selected or in range
     if (JSON.stringify(selected) === JSON.stringify({})) {
       return;
     }
@@ -259,6 +285,14 @@ class MonthlyCalendar extends Component {
 
   copyCells() {
     
+  }
+
+  componentDidMount() {
+    this.findToday()
+  }
+
+  componentDidUpdate() {
+    this.findToday()
   }
 
   render() {
@@ -311,8 +345,6 @@ class MonthlyCalendar extends Component {
           </div>
         </div>
       );
-      let counter = 0
-      let refCounter = 0
       return (
         <>
           <div className="monthly-calendar--navigation">
