@@ -15,8 +15,6 @@ import {
 } from "date-fns";
 import { defaultProps } from "recompose";
 import {
-  Transition,
-  TransitionGroup,
   CSSTransition
 } from "react-transition-group";
 import "./styles/MonthlyCalendar.scss";
@@ -101,12 +99,12 @@ class DaysDialog extends React.Component {
   }
 
   render() {
-    const {year, month, date} = this.props.current
-    const days = Array.apply(null, {length: getDaysInMonth(new Date(year, month, date))}).map(Number.call, Number)
+    const { year, month, date } = this.props.current
+    const days = Array.apply(null, { length: getDaysInMonth(new Date(year, month, date)) }).map(Number.call, Number)
     return (
       <div className="days-dialog">
         <div className="days-scroll">
-          { days.map((d, idx) => <div key={idx}>{d+1}</div>)}
+          {days.map((d, idx) => <div key={idx}>{d + 1}</div>)}
         </div>
         <div className="days-schedule">
           TODOs
@@ -174,7 +172,7 @@ class MonthlyCalendar extends Component {
     });
     this.findToday()
   };
-  
+
   handleMonthClick = () => {
     cleanDOM()
     this.setState({
@@ -196,7 +194,7 @@ class MonthlyCalendar extends Component {
       month: this.state.monthIdx.month,
       day: parseInt(e.currentTarget.innerText)
     }
-    
+
     if (selected === JSON.stringify({})) {
       this.setState({
         selected: payload
@@ -215,26 +213,25 @@ class MonthlyCalendar extends Component {
     // toggle range
     const range = [this.state.selected, payload]
     this.dates.filter(d => d !== null)
-    .filter(d => ( d.classList && !d.classList.contains('prev')
-     && !d.classList.contains('next')) 
-     && range[0].day <= parseInt(d.innerText) 
-     && range[1].day >= parseInt(d.innerText))
-    .forEach(d => {
-      if (d.classList.contains('selected')) {
-        d.classList.remove('selected')
+      .filter(d => (d.classList && !d.classList.contains('prev')
+        && !d.classList.contains('next'))
+        && range[0].day <= parseInt(d.innerText)
+        && range[1].day >= parseInt(d.innerText))
+      .forEach(d => {
+        if (d.classList.contains('selected')) {
+          d.classList.remove('selected')
+          d.classList.add('in-range')
+        }
         d.classList.add('in-range')
-      }
-      d.classList.add('in-range')
-    })
+      })
     this.handleFocus(payload)
   };
-  
+
   findToday = () => {
     const today = this.props.today
     if (document.querySelector('.monthly-calendar--month__year').innerText === getYear(today).toString() && document.querySelector('.monthly-calendar--month__month-num').innerText === String(getMonth(today) + 1)) {
       const dom = document.querySelector(`.monthly-calendar--dates__day${getDate(today)}`)
       dom.classList.add('today')
-
     }
   }
 
@@ -284,19 +281,20 @@ class MonthlyCalendar extends Component {
   }
 
   copyCells() {
-    
+
   }
 
   componentDidMount() {
-    this.findToday()
+    // this.findToday()
   }
 
   componentDidUpdate() {
-    this.findToday()
+    // this.findToday()
   }
 
   render() {
     const renderMonth = data => {
+      const self = this;
       const index = new Date(data.year, data.month, data.date);
       const start_day = startOfMonth(index);
       const end_day = endOfMonth(index);
@@ -371,21 +369,46 @@ class MonthlyCalendar extends Component {
               <div className="monthly-calendar--dates">
                 {["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"].map(
                   (day, idx) => (
-                    <div className="monthly-calendar--dates__days" key={idx}>
+                    <div className="monthly-calendar--dates__days" key={`day${idx}`}>
                       {day}
                     </div>
                   )
                 )}
                 {
-                    [
-                      ...head_days,
-                      ...[...Array(
-                        getDaysInMonth(
-                          new Date(data.year, data.month, data.date)
-                        )
-                      ).keys()].map(d => d+1),
-                      ...tail_days
-                    ].map((day, key) => (
+                  [
+                    ...head_days,
+                    ...[...Array(
+                      getDaysInMonth(
+                        new Date(data.year, data.month, data.date)
+                      )
+                    ).keys()].map(d => d + 1),
+                    ...tail_days
+                  ].map((day, key) => {
+                    if (key < head_days.length) {
+                      return (
+                        <div
+                          className={`monthly-calendar--dates__day prev`}
+                          key={key}
+                          onClick={this.handleDayClick.bind(this)}
+                        >
+                          {day}
+                        </div>
+                      )
+                    }
+
+                    if (key < getDaysInMonth(self.props.today)) {
+                      return (
+                        <div
+                          className={`monthly-calendar--dates__day next`}
+                          key={key}
+                          ref={(ref) => this.dates[key] = ref}
+                          onClick={this.handleDayClick.bind(this)}
+                        >
+                          {day}
+                        </div>
+                      )
+                    }
+                    return (
                       <div
                         className={`monthly-calendar--dates__day${key}`}
                         key={key}
@@ -394,8 +417,9 @@ class MonthlyCalendar extends Component {
                       >
                         {day}
                       </div>
-                    ))
-                  }
+                    )
+                  })
+                }
               </div>
             </div>
           </CSSTransition>
@@ -424,7 +448,7 @@ class MonthlyCalendar extends Component {
           />
         )}
         {this.state.monthIdx.year === this.props.current.year &&
-        this.state.monthIdx.month === this.props.current.month
+          this.state.monthIdx.month === this.props.current.month
           ? renderMonth(this.props.current)
           : renderMonth(this.state.monthIdx)}
         {/* {this.state.selected.day  && (
