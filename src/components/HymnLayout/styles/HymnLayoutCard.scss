@@ -1,0 +1,14 @@
+.card-transition-enter {
+  transform: translate(100%);
+}
+.card-transition-enter-active {
+  transform: translate(0%);
+  transition: transform 1000ms ease-in-out;
+}
+.card-transition-leave {
+  transform: translate(0%);
+}
+.card-transition-leave.card-transition-leave-active {
+  transform: translate(-100%);
+  transition: transform 1000ms ease-in-out;
+}

@@ -1,37 +1,50 @@
-import React, { useReducer, useEffect } from 'react'
-import { Swipeable } from 'react-swipeable'
+import React, { useReducer, useEffect } from "react";
+import { Swipeable } from "react-swipeable";
+import { TransitionGroup } from "react-transition-group";
 
-const reducer = (state, action) => {
+const HymnLayout = props => {
+  const reducer = (state, action) => {
     switch (action.type) {
-        case 'Up':
-            return { row: state.row + 1, stage: state.stage }
-
-        case 'Down':
-            return { row: state.row - 1, stage: state.stage}
-
-        case 'Left':
-            return { stage: state.stage + 1, row: state.row}
-
-        case 'Right':
-            return { stage: state.stage - 1, row: state.row}
-        default:
-            return state
+      case "Up":
+        if (state.row === props.children.length - 1)
+          return { row: state.row, stage: state.stage };
+        return { row: state.row + 1, stage: state.stage };
+      case "Down":
+        if (state.row === 0) return { row: state.row, stage: state.stage };
+        return { row: state.row - 1, stage: state.stage };
+      case "Left":
+        // TODO: figure out how to get length of children's children
+        return { stage: state.stage + 1, row: state.row };
+      case "Right":
+        if (state.row === 0) return { row: state.row, stage: state.stage };
+        return { stage: state.stage - 1, row: state.row };
+      default:
+        return state;
     }
-}
-const HymnLayout = (props) => {
-    const [state, dispatch] = useReducer(reducer, { row: 0, stage: 0 })
-    useEffect(() => {
-        console.log('rendered!')
-    })
-    return (
-        <div className="hymn-layout">
-            <Swipeable onSwipedRight={() => dispatch({ type: 'Right' })} onSwipedLeft={() => dispatch({ type: 'Left' })} onSwipedUp={() => dispatch({ type: 'Up' })} onSwipedDown={() => dispatch({ type: 'Down' })}>
-                {props.children[state.stage]}
-                Stage : {state.stage}
-                Row : {state.row}
-            </Swipeable>
-        </div>
-    )
-}
+  };
+  const [state, dispatch] = useReducer(reducer, { row: 0, stage: 0 });
+  useEffect(() => {
+    console.log("rendered!");
+  });
+  return (
+    <div className="hymn-layout">
+      <Swipeable
+        onSwipedRight={() => dispatch({ type: "Right" })}
+        onSwipedLeft={() => dispatch({ type: "Left" })}
+        onSwipedUp={() => dispatch({ type: "Up" })}
+        onSwipedDown={() => dispatch({ type: "Down" })}
+      >
+        <TransitionGroup className="layout--slide">
+          {props.children[state.row] &&
+          props.children[state.row].props.children[1]
+            ? props.children[state.row].props.children[state.stage]
+            : props.children[state.row]}
+        </TransitionGroup>
+        Stage : {state.stage}
+        Row : {state.row}
+      </Swipeable>
+    </div>
+  );
+};
 
-export default HymnLayout
+export default HymnLayout;
