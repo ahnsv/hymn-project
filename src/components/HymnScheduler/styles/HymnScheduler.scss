@@ -1,0 +1,16 @@
+.hymn-scheduler {
+  .hymn-scheduler-week {
+    .week--scroller {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      height: 10vh;
+    }
+
+    .week--scroller > div {
+      width: 50px;
+      text-align: center;
+    }
+  }
+}

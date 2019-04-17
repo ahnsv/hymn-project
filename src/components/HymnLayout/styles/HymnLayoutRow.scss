@@ -9,4 +9,11 @@
         align-items: center;
         justify-content: center;
     }
+
+    .row-transition-enter {
+        opacity: 0.4;
+    }
+    .row-transition-enter-active {
+        opacity: 1;
+    }
 }

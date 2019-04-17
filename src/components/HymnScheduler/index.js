@@ -1,8 +1,8 @@
 import React from 'react'
 import MonthlyCalendar from './MonthlyCalendar';
 
-const HymnScheduler = () => (
+const HymnSchedulerLegacy = () => (
     <MonthlyCalendar/>
 )
 
-export {HymnScheduler}
+export {HymnSchedulerLegacy}
