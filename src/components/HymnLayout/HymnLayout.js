@@ -1,6 +1,5 @@
 import React, { useReducer, useEffect } from "react";
 import { Swipeable } from "react-swipeable";
-import { TransitionGroup } from "react-transition-group";
 
 const HymnLayout = props => {
   const reducer = (state, action) => {
@@ -34,13 +33,11 @@ const HymnLayout = props => {
         onSwipedUp={() => dispatch({ type: "Up" })}
         onSwipedDown={() => dispatch({ type: "Down" })}
       >
-        <TransitionGroup className="layout--slide">
-          {props.children[state.row] &&
-            React.cloneElement(props.children[state.row], {
-              in: true,
-              stage: state.stage
-            })}
-        </TransitionGroup>
+        {props.children[state.row] &&
+          React.cloneElement(props.children[state.row], {
+            in: true,
+            stage: state.stage
+          })}
         Stage : {state.stage}
         Row : {state.row}
       </Swipeable>
