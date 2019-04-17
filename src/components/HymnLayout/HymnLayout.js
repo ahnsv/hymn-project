@@ -36,9 +36,10 @@ const HymnLayout = props => {
       >
         <TransitionGroup className="layout--slide">
           {props.children[state.row] &&
-          props.children[state.row].props.children[1]
-            ? props.children[state.row].props.children[state.stage]
-            : props.children[state.row]}
+            React.cloneElement(props.children[state.row], {
+              in: true,
+              stage: state.stage
+            })}
         </TransitionGroup>
         Stage : {state.stage}
         Row : {state.row}

@@ -12,3 +12,7 @@
   transform: translate(-100%);
   transition: transform 1000ms ease-in-out;
 }
+
+.hymn-layout-card > div {
+  height: calc(95vh - 16px);
+}

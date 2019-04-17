@@ -7,21 +7,21 @@ import HymnLayoutRow from './HymnLayoutRow';
 storiesOf('HymnLayout', module)
   .add('default', () => (
     <HymnLayout>
-      <HymnLayoutCard style={{background: 'yellow'}}>
-        <div>1</div>
+      <HymnLayoutCard> 
+        <div style={{background: 'yellow'}}>1</div>
       </HymnLayoutCard>
-      <HymnLayoutCard style={{background: 'red'}}>
-        <div>2</div>
+      <HymnLayoutCard >
+        <div style={{background: 'red'}}>2</div>
       </HymnLayoutCard>
-      <HymnLayoutRow style={{background: 'blue'}}>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
+      <HymnLayoutRow >
+        <div style={{background: 'blue'}}>3</div>
+        <div style={{background: 'blue'}}>3</div>
+        <div style={{background: 'blue'}}>3</div>
+        <div style={{background: 'blue'}}>3</div>
+        <div style={{background: 'blue'}}>3</div>
       </HymnLayoutRow>
-      <HymnLayoutCard style={{background: 'pink'}}>
-        <div>4</div>
+      <HymnLayoutCard >
+        <div style={{background: 'pink'}}>4</div>
       </HymnLayoutCard>
     </HymnLayout>
   ))
