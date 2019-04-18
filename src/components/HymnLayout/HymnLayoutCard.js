@@ -6,11 +6,11 @@ const HymnLayoutCard = props => {
   const [inProp, setInProp] = useState(false);
   useEffect(() => {
    setInProp(props.in); 
-   console.log('in got true')
-  })
+   console.log('props ', props)
+  }, [props])
   return (
     <div className="hymn-layout-card">
-      <CSSTransition in={inProp} classNames="card-transition">
+      <CSSTransition in={inProp} classNames="card-transition" timeout={500}>
         {props.children}
       </CSSTransition>
     </div>

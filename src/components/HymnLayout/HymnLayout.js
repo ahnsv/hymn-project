@@ -23,8 +23,8 @@ const HymnLayout = props => {
   };
   const [state, dispatch] = useReducer(reducer, { row: 0, stage: 0 });
   useEffect(() => {
-    console.log("rendered!");
-  });
+    console.log(`state got changed to row: ${state.row} stage: ${state.stage}`)
+  }, [state]);
   return (
     <div className="hymn-layout">
       <Swipeable
@@ -38,8 +38,6 @@ const HymnLayout = props => {
             in: true,
             stage: state.stage
           })}
-        Stage : {state.stage}
-        Row : {state.row}
       </Swipeable>
     </div>
   );

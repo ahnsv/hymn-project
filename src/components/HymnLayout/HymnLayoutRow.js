@@ -7,14 +7,15 @@ const HymnLayoutRow = props => {
   useEffect(() => {
     setState(props.stage);
     setInProps(props.in);
-  });
+    console.log('props ', props)
+  }, [props]);
   const indicator = props.children.map((c, i) => {
     if (i === state) return <div className="indicator current" key={i}>*</div>;
     return <div className="indicator" key={i}>.</div>;
   });
   return (
     <div className="hymn-layout-row">
-      <CSSTransition classNames="row-transition" in={inProp} timeout={300}>
+      <CSSTransition classNames="row-transition" in={inProp} timeout={500}>
         {props.children[state]}
       </CSSTransition>
       <div className="indicator--wrapper">{indicator}</div>

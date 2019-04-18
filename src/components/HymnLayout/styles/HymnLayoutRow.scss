@@ -1,19 +1,27 @@
 .hymn-layout-row {
-    & > div {
-        height: calc(95vh - 16px);
-    }
-    .indicator--wrapper {
-        height: inherit;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-    }
+  & > div {
+    height: calc(95vh - 16px);
+  }
+  .indicator--wrapper {
+    height: inherit;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
 
-    .row-transition-enter {
-        opacity: 0.4;
-    }
-    .row-transition-enter-active {
-        opacity: 1;
-    }
+  .row-transition-enter {
+    transform: translate(100%);
+  }
+  .row-transition-enter-active {
+    transform: translate(0%);
+    transition: transform 500ms ease-in-out;
+  }
+  .row-transition-leave {
+    transform: translate(0%);
+  }
+  .row-transition-leave.row-transition-leave-active {
+    transform: translate(-100%);
+    transition: transform 500ms ease-in-out;
+  }
 }
