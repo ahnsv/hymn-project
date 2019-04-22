@@ -1,5 +1,6 @@
-import React, { useReducer, useEffect } from "react";
+import React, { useEffect, useReducer } from "react";
 import { Swipeable } from "react-swipeable";
+import { TransitionGroup } from "react-transition-group";
 
 const HymnLayout = props => {
   const reducer = (state, action) => {
@@ -23,7 +24,7 @@ const HymnLayout = props => {
   };
   const [state, dispatch] = useReducer(reducer, { row: 0, stage: 0 });
   useEffect(() => {
-    console.log(`state got changed to row: ${state.row} stage: ${state.stage}`)
+    console.log("rendered!");
   }, [state]);
   return (
     <div className="hymn-layout">
@@ -33,11 +34,14 @@ const HymnLayout = props => {
         onSwipedUp={() => dispatch({ type: "Up" })}
         onSwipedDown={() => dispatch({ type: "Down" })}
       >
-        {props.children[state.row] &&
+        <TransitionGroup className="layout-transition">
+          {props.children[state.row] &&
           React.cloneElement(props.children[state.row], {
             in: true,
-            stage: state.stage
+            stage: state.stage,
+            row: state.row
           })}
+        </TransitionGroup>
       </Swipeable>
     </div>
   );

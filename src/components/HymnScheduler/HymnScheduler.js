@@ -1,13 +1,5 @@
-import React from "react";
-import { useState } from "react";
-import {
-  eachDay,
-  startOfWeek,
-  endOfWeek,
-  getDate,
-  subDays,
-  addDays
-} from "date-fns";
+import React, { useState } from "react";
+import { addDays, addMonths, eachDay, endOfMonth, getDate, startOfMonth, subDays, subMonths } from "date-fns";
 import { Swipeable } from "react-swipeable";
 import "./styles/HymnScheduler.scss";
 
@@ -19,16 +11,15 @@ const HymnScheduler = () => {
   const today = new Date();
   return (
     <div className="hymn-scheduler">
-      <HymnSchedulerWeek today={today} />
+      <HymnSchedulerMonth today={today}/>
+      <HymnSchedulerWeek today={today}/>
     </div>
   );
 };
 
 const HymnSchedulerWeek = ({ today }) => {
   const [index, setIndex] = useState(today);
-  // TODO: Set state to today by default, to selected on demand
   const weekIndex = eachDay(subDays(index, 3), addDays(index, 3));
-  // TODO: Change state with horizontal scroll
   const handleSwipe = e => {
     switch (e.dir) {
       case "Left":
@@ -45,11 +36,11 @@ const HymnSchedulerWeek = ({ today }) => {
       <div className="week--scroller">
         {weekIndex.map((w, i) => (
           <Swipeable onSwiped={e => handleSwipe(e)} key={i}>
-            <div key={i}>{getDate(w)}</div>
+            <div key={i} className={(i === 3) ? "today" : ""}>{getDate(w)}</div>
           </Swipeable>
         ))}
       </div>
-      <HymnSchedulerDailyTodo index={index} />
+      <HymnSchedulerDailyTodo index={index}/>
     </div>
   );
 };
@@ -59,6 +50,7 @@ const HymnSchedulerDailyTodo = props => {
     { date: "2019-04-18", title: "밥 먹기", important: true, due: "" },
     { date: "2019-04-19", title: "밥 먹기", important: false, due: "" }
   ];
+  // TODO: query todos from mobx
   return (
     <div className="hymn-scheduler-daily-todo-wrapper">
       {todoData.map((t, idx) => (
@@ -73,8 +65,31 @@ const HymnSchedulerDailyTodo = props => {
   );
 };
 
-const HymnSchedulerMonth = props => {
-  const [index, setIndex] = useState(null);
+/**
+ * @description Hymn Scheduler Monthly Calendar
+ * @param today Date
+ * @constructor
+ */
+const HymnSchedulerMonth = ({ today }) => {
+  const [index, setIndex] = useState(today);
+  const daysInMonth = eachDay(startOfMonth(today), endOfMonth(today)).map((d, idx) => {
+    return <div
+      className={`current-mth-day-${idx + 1} ${(index === today) ? (idx === getDate(today) - 1) ? "today" : "" : ""}`}
+      key={idx}>{getDate(d)}</div>;
+  });
+  const handlePrev = (e) => {
+    setIndex(subMonths(index, 1));
+  };
+  const handleNext = e => {
+    setIndex(addMonths(index, 1));
+  };
+  return (
+    <div className="hymn-scheduler-month">
+      <Swipeable onSwipedRight={handlePrev} onSwipedLeft={handleNext}>
+        {daysInMonth}
+      </Swipeable>
+    </div>
+  );
 };
 
 export default HymnScheduler;
