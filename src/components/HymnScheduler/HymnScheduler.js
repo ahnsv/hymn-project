@@ -1,5 +1,16 @@
 import React, { useState } from "react";
-import { addDays, addMonths, eachDay, endOfMonth, getDate, startOfMonth, subDays, subMonths } from "date-fns";
+import {
+  addDays,
+  addMonths,
+  eachDay,
+  endOfMonth,
+  endOfWeek,
+  getDate,
+  startOfMonth,
+  startOfWeek,
+  subDays,
+  subMonths
+} from "date-fns";
 import { Swipeable } from "react-swipeable";
 import "./styles/HymnScheduler.scss";
 
@@ -72,21 +83,31 @@ const HymnSchedulerDailyTodo = props => {
  */
 const HymnSchedulerMonth = ({ today }) => {
   const [index, setIndex] = useState(today);
-  const daysInMonth = eachDay(startOfMonth(today), endOfMonth(today)).map((d, idx) => {
+  const startDate = startOfMonth(today);
+  const endDate = endOfMonth(today);
+  const prevMonthIdx = subDays(startDate, 1);
+  const nextMonthIdx = addDays(endDate, 1);
+  const daysInMonth = eachDay(startDate, endDate).map((d, idx) => {
     return <div
       className={`current-mth-day-${idx + 1} ${(index === today) ? (idx === getDate(today) - 1) ? "today" : "" : ""}`}
       key={idx}>{getDate(d)}</div>;
   });
-  const handlePrev = (e) => {
+  const prevMthDays = eachDay(startOfWeek(prevMonthIdx), prevMonthIdx).map((d, idx) => <div className="prev=mth-day"
+                                                                                            key={`prev-day-${idx}`}>{getDate(d)}</div>);
+  const nextMthDays = eachDay(nextMonthIdx, endOfWeek(nextMonthIdx)).map((d, idx) => <div className={`next-mth-days`}
+                                                                                          key={`next-day-${idx}`}>{getDate(d)}</div>);
+  const handlePrev = () => {
     setIndex(subMonths(index, 1));
   };
-  const handleNext = e => {
+  const handleNext = () => {
     setIndex(addMonths(index, 1));
   };
   return (
     <div className="hymn-scheduler-month">
       <Swipeable onSwipedRight={handlePrev} onSwipedLeft={handleNext}>
+        {prevMthDays}
         {daysInMonth}
+        {nextMthDays}
       </Swipeable>
     </div>
   );
