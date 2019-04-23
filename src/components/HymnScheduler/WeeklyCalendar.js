@@ -1,23 +1,23 @@
-import React from 'react'
+import React from 'react';
 import { defaultProps } from 'recompose';
-import { getMonth, getYear, getDate, getDaysInMonth, getDay } from 'date-fns'
+import {
+  getMonth, getYear, getDate, getDaysInMonth, getDay,
+} from 'date-fns';
 
 export default class WeeklyCalendar extends React.Component {
-    render() {
-        return (
-            <div className="week-calendar">
-                
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div className="week-calendar" />
+    );
+  }
 }
 
 const withDefaultProps = defaultProps({
-    current: {
-        year: getYear(today),
-        month: getMonth(today),
-        date: getDate(today),
-        day: getDay(today)
-    },
-    focused: false
-})
+  current: {
+    year: getYear(today),
+    month: getMonth(today),
+    date: getDate(today),
+    day: getDay(today),
+  },
+  focused: false,
+});

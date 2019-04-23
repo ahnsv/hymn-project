@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 import MonthlyCalendar from './MonthlyCalendar';
 
 const HymnSchedulerLegacy = () => (
-    <MonthlyCalendar/>
-)
+  <MonthlyCalendar />
+);
 
-export {HymnSchedulerLegacy}
+export { HymnSchedulerLegacy };

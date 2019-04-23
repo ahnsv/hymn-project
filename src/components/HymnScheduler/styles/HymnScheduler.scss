@@ -13,4 +13,29 @@
       text-align: center;
     }
   }
+  .hymn-scheduler-month {
+    .scheduler-month-nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .scheduler-month-wrapper {
+      display: grid;
+      grid-template: repeat(7, 50px) / repeat(7, 50px);
+      & > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .current-mth-days {
+        &.selected {
+          background: blue;
+        }
+        &.today {
+          background: yellow;
+        }
+      }
+    }
+  }
 }

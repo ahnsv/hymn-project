@@ -5,5 +5,5 @@ import HymnScheduler from './HymnScheduler';
 
 storiesOf('HymnScheduler', module)
   .add('default', () => (
-    <HymnScheduler/>
-  ))
+    <HymnScheduler />
+  ));
