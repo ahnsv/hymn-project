@@ -19,7 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook"
+    "storybook": "start-storybook",
+    "deploy-storybook": "storybook-to-ghpages -- --ci --host-token-env-variable=5d586b41c9e0d284942f6b8ea1a4c62d51d84c49"
   },
   "eslintConfig": {
     "extends": "react-app"
