@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   addDays,
   addMonths,
@@ -6,6 +6,8 @@ import {
   endOfMonth,
   endOfWeek,
   getDate,
+  getMonth,
+  getYear,
   startOfMonth,
   startOfWeek,
   subDays,
@@ -100,7 +102,7 @@ const HymnSchedulerMonth = ({ today }) => {
     setIndex(subMonths(index, 1));
   };
   const handleNext = () => {
-    setIndex(addMonths(index, 1));
+    setIndex(index => addMonths(index, 1));
   };
   return (
     <div className="hymn-scheduler-month">
