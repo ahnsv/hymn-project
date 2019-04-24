@@ -1,8 +1,14 @@
 import React from "react";
 import HymnFormRow from "./HymnFormRow";
 
-const HymnSchedulerRegisterForm = ({ start, end }) => (
-  <div className="hymn-schedule-register-form">
+// TODO: overlay background close make it work
+const HymnSchedulerRegisterForm = ({ start, end, isToggled, toggle }) => (
+  <div className={`hymn-schedule-register-form ${isToggled}`} onClick={(e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggle(false);
+  }}
+  >
     <form>
       <div className={`scheduler-start`}>{start}</div>
       <div className={`scheduler-end`}>{end}</div>

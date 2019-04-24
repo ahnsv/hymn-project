@@ -49,10 +49,13 @@ const HymnSchedulerWithDialog = () => {
   return (
     <div className="hymn-scheduler">
       <HymnSchedulerMonth today={today} setDialog={setDialog} pickDates={pickDates}/>
-      <button onClick={() => setDialog(true)}>추가</button>
-      {
-        dialog && <HymnSchedulerRegisterForm start={datesPicked[0]} end={datesPicked[1]}/>
-      }
+      <button className={`add-schedule`} onClick={() => setDialog(true)}>+</button>
+      <HymnSchedulerRegisterForm
+        start={datesPicked[0]}
+        end={datesPicked[1]}
+        isToggled={(!dialog) ? "hidden" : ""}
+        toggle={setDialog}
+      />
     </div>
   );
 };
@@ -67,8 +70,31 @@ const HymnSchedulerWithDialog = () => {
  */
 const HymnSchedulerMonth = ({ today, setDialog, pickDates }) => {
   const [index, setIndex] = useState(today);
+  useEffect(() => () => {
+    setRange([]);
+    setFocusedNode(null);
+  }, [index]);
+
   const [range, setRange] = useState([]);
+  useEffect(() => {
+    range.forEach(r => r.classList.add("selected"));
+    return () => {
+      range.forEach(r => r.classList.remove("selected"));
+    };
+  }, [range]);
+
   const [focusedNode, setFocusedNode] = useState(null);
+  useEffect(() => {
+    const wrapper = Array.from(document.querySelector(".scheduler-month-wrapper").childNodes);
+    for (let i = wrapper.indexOf(range[0]) + 1; i < wrapper.indexOf(focusedNode); i++) {
+      wrapper[i].classList.add("in_range");
+    }
+    return () => {
+      wrapper.forEach(c => {
+        c.classList.remove("in_range");
+      }, [focusedNode]);
+    };
+  });
 
   const formatDate = (idx) => format(new Date(getYear(index), getMonth(index), parseInt(idx)), "YYYY-MM-DD");
 
@@ -87,7 +113,10 @@ const HymnSchedulerMonth = ({ today, setDialog, pickDates }) => {
     }
     //  range select, pop up scheduler in range
     setDialog(true);
-    pickDates([formatDate(range[0].innerText), formatDate(e.target.innerText)]);
+    (parseInt(range[0].innerText) < parseInt(e.target.innerText))
+      ? pickDates([formatDate(range[0].innerText), formatDate(e.target.innerText)])
+      : pickDates([formatDate(e.target.innerText), formatDate(range[0].innerText)]);
+    //  TODO: block hovering when it's clicked
   }
 
   function handleHover(e) {
@@ -97,27 +126,6 @@ const HymnSchedulerMonth = ({ today, setDialog, pickDates }) => {
     setFocusedNode(e.target);
   }
 
-  useEffect(() => {
-    const wrapper = Array.from(document.querySelector(".scheduler-month-wrapper").childNodes);
-    for (let i = wrapper.indexOf(range[0]) + 1; i < wrapper.indexOf(focusedNode); i++) {
-      wrapper[i].classList.add("in_range");
-    }
-    return () => {
-      wrapper.forEach(c => {
-        c.classList.remove("in_range");
-      }, [focusedNode]);
-    };
-  });
-  useEffect(() => () => {
-    setRange([]);
-    setFocusedNode(null);
-  }, [index]);
-  useEffect(() => {
-    range.forEach(r => r.classList.add("selected"));
-    return () => {
-      range.forEach(r => r.classList.remove("selected"));
-    };
-  }, [range]);
 
   // For prev and next month days
   const startDate = startOfMonth(index);
