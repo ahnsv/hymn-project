@@ -16,6 +16,8 @@ import {
 } from "date-fns";
 import { Swipeable } from "react-swipeable";
 import "./styles/HymnScheduler.scss";
+import HymnSchedulerWeek from "./HymnSchedulerWeek";
+import HymnSchedulerRegisterForm from "./HymnSchedulerRegisterForm";
 
 /**
  * @description Highest Component of HymnScheduler
@@ -55,84 +57,12 @@ const HymnSchedulerWithDialog = () => {
   );
 };
 
-const HymnSchedulerWeek = ({ today }) => {
-  const [index, setIndex] = useState(today);
-  const weekIndex = eachDay(subDays(index, 3), addDays(index, 3));
-  const handleSwipe = (e) => {
-    if (e.dir === "Left") {
-      setIndex(addDays(index, 1));
-    } else if (e.dir === "Right") {
-      setIndex(subDays(index, 1));
-    } else {
-    }
-  };
-  return (
-    <div className="hymn-scheduler-week">
-      <div className="week--scroller">
-        {weekIndex.map((w, i) => (
-          <Swipeable onSwiped={e => handleSwipe(e)} key={i}>
-            <div key={i} className={(i === 3) ? "today" : ""}>{getDate(w)}</div>
-          </Swipeable>
-        ))}
-      </div>
-      <HymnSchedulerDailyTodo index={index}/>
-    </div>
-  );
-};
-
-const HymnSchedulerDailyTodo = (props) => {
-  const todoData = [
-    {
-      date: "2019-04-18", title: "밥 먹기", important: true, due: ""
-    },
-    {
-      date: "2019-04-19", title: "밥 먹기", important: false, due: ""
-    }
-  ];
-  // TODO: query todos from mobx
-  return (
-    <div className="hymn-scheduler-daily-todo-wrapper">
-      {todoData.map((t, idx) => (
-        <div className="hymn-scheduler-daily-todo" key={idx}>
-          <div className="daily-todo-title">{t.title}</div>
-          <div className="daily-todo-importance">
-            {t.important ? "important, bitch" : "meh"}
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-};
-
-const HymnFormRow = ({ label, placeholder }) => {
-  const [formData, setFormData] = useState("");
-  return (
-    <div className="hymn-form-row">
-      <label>{label}</label>
-      <input
-        placeholder={placeholder}
-        className="hymn-form-input"
-        onChange={e => setFormData(e.target.value)}
-      />
-    </div>
-  );
-};
-
-const HymnSchedulerRegisterForm = ({ start, end }) => (
-  <div className="hymn-schedule-register-form">
-    <form>
-      <div className={`scheduler-start`}>{start}</div>
-      <div className={`scheduler-end`}>{end}</div>
-      <HymnFormRow label="제목" placeholder="스케줄 제목을 입력해주세요"/>
-      <HymnFormRow label="내용" placeholder="스케줄 내용을 입력해주세요"/>
-    </form>
-  </div>
-);
 
 /**
  * @description Hymn Scheduler Monthly Calendar
  * @param today Date
  * @param setDialog
+ * @param pickDates
  * @constructor
  */
 const HymnSchedulerMonth = ({ today, setDialog, pickDates }) => {
