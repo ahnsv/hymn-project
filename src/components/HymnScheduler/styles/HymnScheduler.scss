@@ -1,4 +1,8 @@
 .hymn-scheduler {
+  font-family: 'Blank Sans Bold', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   .hymn-scheduler-week {
     .week--scroller {
       display: flex;
@@ -13,25 +17,47 @@
       text-align: center;
     }
   }
+
   .hymn-scheduler-month {
     .scheduler-month-nav {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      font-size: 3em;
+      margin: 3vh 0;
     }
+
     .scheduler-month-wrapper {
       display: grid;
       grid-template: repeat(7, 50px) / repeat(7, 50px);
+
       & > div {
         display: flex;
         align-items: center;
         justify-content: center;
+        border: 1px solid rgba(69, 66, 66, 0.55);
       }
-      .current-mth-days {
-        &.selected {
-          background: blue;
+
+      & > .in_range {
+        background: rgba(135, 206, 235, 0.5);
+      }
+
+      & > .prev-mth-days, .next-mth-days {
+        opacity: 0.2;
+      }
+
+      & > .current-mth-days {
+        &:hover {
+          background: gray;
+          color: whitesmoke;
         }
+
+        &.selected {
+          background: #4131ff;
+          color: whitesmoke;
+        }
+
         &.today {
           background: yellow;
         }

@@ -1,6 +1,6 @@
-import React, { useEffect, useReducer } from 'react';
-import { Swipeable } from 'react-swipeable';
-import { TransitionGroup } from 'react-transition-group';
+import React, { useEffect, useReducer } from "react";
+import { Swipeable } from "react-swipeable";
+import { TransitionGroup } from "react-transition-group";
 
 const HymnLayout = (props) => {
   const reducer = (state, action) => {

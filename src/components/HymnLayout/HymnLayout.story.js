@@ -1,8 +1,8 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import HymnLayout from './HymnLayout';
-import HymnLayoutCard from './HymnLayoutCard';
-import HymnLayoutRow from './HymnLayoutRow';
+import React from "react";
+import { storiesOf } from "@storybook/react";
+import HymnLayout from "./HymnLayout";
+import HymnLayoutCard from "./HymnLayoutCard";
+import HymnLayoutRow from "./HymnLayoutRow";
 
 storiesOf('HymnLayout', module)
   .add('default', () => (

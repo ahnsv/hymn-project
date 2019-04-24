@@ -17,7 +17,9 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "prettier",
+        "react-hooks"
     ],
     "rules": {
     }

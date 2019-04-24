@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import './styles/HymnLayoutRow.scss';
-import { CSSTransition } from 'react-transition-group';
+import React, { useEffect, useState } from "react";
+import "./styles/HymnLayoutRow.scss";
+import { CSSTransition } from "react-transition-group";
 
 const HymnLayoutRow = (props) => {
   const [state, setState] = useState(0);

@@ -1,5 +1,5 @@
-import React from 'react';
-import MonthlyCalendar from './MonthlyCalendar';
+import React from "react";
+import MonthlyCalendar from "./MonthlyCalendar";
 
 const HymnSchedulerLegacy = () => (
   <MonthlyCalendar />

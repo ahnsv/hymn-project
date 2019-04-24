@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { CSSTransition } from 'react-transition-group';
-import './styles/HymnLayoutCard.scss';
+import React, { useEffect, useState } from "react";
+import { CSSTransition } from "react-transition-group";
+import "./styles/HymnLayoutCard.scss";
 
 const HymnLayoutCard = (props) => {
   const [inProp, setInProp] = useState(false);

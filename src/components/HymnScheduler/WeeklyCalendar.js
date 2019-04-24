@@ -1,8 +1,6 @@
-import React from 'react';
-import { defaultProps } from 'recompose';
-import {
-  getMonth, getYear, getDate, getDaysInMonth, getDay,
-} from 'date-fns';
+import React from "react";
+import { defaultProps } from "recompose";
+import { getDate, getDay, getMonth, getYear } from "date-fns";
 
 export default class WeeklyCalendar extends React.Component {
   render() {
