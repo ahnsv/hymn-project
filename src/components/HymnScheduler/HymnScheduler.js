@@ -5,6 +5,7 @@ import {
   eachDay,
   endOfMonth,
   endOfWeek,
+  format,
   getDate,
   getMonth,
   getYear,
@@ -42,12 +43,13 @@ const HymnSchedulerWithWeekly = () => {
 const HymnSchedulerWithDialog = () => {
   const today = new Date();
   const [dialog, setDialog] = useState(false);
+  const [datesPicked, pickDates] = useState([]);
   return (
     <div className="hymn-scheduler">
-      <HymnSchedulerMonth today={today} setDialog={setDialog}/>
+      <HymnSchedulerMonth today={today} setDialog={setDialog} pickDates={pickDates}/>
       <button onClick={() => setDialog(true)}>추가</button>
       {
-        dialog && <HymnSchedulerRegisterForm/>
+        dialog && <HymnSchedulerRegisterForm start={datesPicked[0]} end={datesPicked[1]}/>
       }
     </div>
   );
@@ -116,9 +118,11 @@ const HymnFormRow = ({ label, placeholder }) => {
   );
 };
 
-const HymnSchedulerRegisterForm = props => (
+const HymnSchedulerRegisterForm = ({ start, end }) => (
   <div className="hymn-schedule-register-form">
     <form>
+      <div className={`scheduler-start`}>{start}</div>
+      <div className={`scheduler-end`}>{end}</div>
       <HymnFormRow label="제목" placeholder="스케줄 제목을 입력해주세요"/>
       <HymnFormRow label="내용" placeholder="스케줄 내용을 입력해주세요"/>
     </form>
@@ -128,24 +132,32 @@ const HymnSchedulerRegisterForm = props => (
 /**
  * @description Hymn Scheduler Monthly Calendar
  * @param today Date
+ * @param setDialog
  * @constructor
  */
-const HymnSchedulerMonth = ({ today, setDialog }) => {
+const HymnSchedulerMonth = ({ today, setDialog, pickDates }) => {
   const [index, setIndex] = useState(today);
   const [range, setRange] = useState([]);
   const [focusedNode, setFocusedNode] = useState(null);
+
+  const formatDate = (idx) => format(new Date(getYear(index), getMonth(index), parseInt(idx)), "YYYY-MM-DD");
 
   function handleClick(e) {
     // In order to target persist through range state change
     e.persist();
     if (range.length === 0) {
       setRange([e.target]);
+      return;
     }
     if (range.includes(e.target)) {
       //  Popup scheduler add
       setDialog(true);
+      pickDates([formatDate(e.target.innerText), formatDate(e.target.innerText)]);
+      return;
     }
     //  range select, pop up scheduler in range
+    setDialog(true);
+    pickDates([formatDate(range[0].innerText), formatDate(e.target.innerText)]);
   }
 
   function handleHover(e) {
@@ -171,8 +183,6 @@ const HymnSchedulerMonth = ({ today, setDialog }) => {
     setFocusedNode(null);
   }, [index]);
   useEffect(() => {
-    // range.forEach(s => s.className += 'selected');
-    console.log(range);
     range.forEach(r => r.classList.add("selected"));
     return () => {
       range.forEach(r => r.classList.remove("selected"));
