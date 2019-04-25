@@ -45,10 +45,17 @@ const HymnSchedulerWithWeekly = () => {
 const HymnSchedulerWithDialog = () => {
   const today = new Date();
   const [dialog, setDialog] = useState(false);
+  // TODO: change this into custom hook
+  const dialogEffect = (param, sideEffect) => useEffect(() => {
+    if (dialog === true) {
+      param([]);
+    }
+    sideEffect();
+  }, [dialog]);
   const [datesPicked, pickDates] = useState([]);
   return (
     <div className="hymn-scheduler">
-      <HymnSchedulerMonth today={today} setDialog={setDialog} pickDates={pickDates}/>
+      <HymnSchedulerMonth today={today} setDialog={setDialog} pickDates={pickDates} dialogEffect={dialogEffect}/>
       <button className={`add-schedule`} onClick={() => setDialog(true)}>+</button>
       <HymnSchedulerRegisterForm
         start={datesPicked[0]}
@@ -66,16 +73,26 @@ const HymnSchedulerWithDialog = () => {
  * @param today Date
  * @param setDialog
  * @param pickDates
+ * @param dialogEffect
  * @constructor
  */
-const HymnSchedulerMonth = ({ today, setDialog, pickDates }) => {
+const HymnSchedulerMonth = ({ today, setDialog, pickDates, dialogEffect }) => {
   const [index, setIndex] = useState(today);
-  useEffect(() => () => {
+  useEffect(() => {
     setRange([]);
     setFocusedNode(null);
+    return () => {
+
+    };
   }, [index]);
 
   const [range, setRange] = useState([]);
+  // call dialog effect from parent
+  dialogEffect(setRange, () => {
+    document.querySelector(".scheduler-month-wrapper").childNodes.forEach(c => {
+      c.classList.remove("in_range");
+    });
+  });
   useEffect(() => {
     range.forEach(r => r.classList.add("selected"));
     return () => {
@@ -85,22 +102,35 @@ const HymnSchedulerMonth = ({ today, setDialog, pickDates }) => {
 
   const [focusedNode, setFocusedNode] = useState(null);
   useEffect(() => {
+    if (focusedNode === null) {
+      return;
+    }
     const wrapper = Array.from(document.querySelector(".scheduler-month-wrapper").childNodes);
-    for (let i = wrapper.indexOf(range[0]) + 1; i < wrapper.indexOf(focusedNode); i++) {
-      wrapper[i].classList.add("in_range");
+    if (wrapper.indexOf(range[0]) < wrapper.indexOf(focusedNode)) {
+      for (let i = wrapper.indexOf(range[0]) + 1; i < wrapper.indexOf(focusedNode); i++) {
+        wrapper[i].classList.add("in_range");
+      }
+    }
+    if (wrapper.indexOf(range[0]) > wrapper.indexOf(focusedNode)) {
+      for (let i = wrapper.indexOf(focusedNode) + 1; i < wrapper.indexOf(range[0]); i++) {
+        wrapper[i].classList.add("in_range");
+      }
     }
     return () => {
       wrapper.forEach(c => {
         c.classList.remove("in_range");
-      }, [focusedNode]);
+      });
     };
-  });
+  }, [focusedNode]);
 
-  const formatDate = (idx) => format(new Date(getYear(index), getMonth(index), parseInt(idx)), "YYYY-MM-DD");
+  const formatDate = (idx) => format(new Date(getYear(index),
+    getMonth(index),
+    parseInt(idx)), "YYYY-MM-DD");
 
   function handleClick(e) {
     // In order to target persist through range state change
     e.persist();
+    // TODO: handle inter-month schedule add
     if (range.length === 0) {
       setRange([e.target]);
       return;
@@ -112,6 +142,7 @@ const HymnSchedulerMonth = ({ today, setDialog, pickDates }) => {
       return;
     }
     //  range select, pop up scheduler in range
+    setRange(range => [...range, e.target]);
     setDialog(true);
     (parseInt(range[0].innerText) < parseInt(e.target.innerText))
       ? pickDates([formatDate(range[0].innerText), formatDate(e.target.innerText)])
@@ -134,7 +165,7 @@ const HymnSchedulerMonth = ({ today, setDialog, pickDates }) => {
   const nextMonthIdx = addDays(endDate, 1);
   const daysInMonth = eachDay(startDate, endDate).map((d, idx) => (
     <div
-      className={`current-mth-days ${(index === today) ? (idx === getDate(today) - 1) ? "today" : "" : ""}`}
+      className={`current-mth-days ${(index === today) ? (idx === getDate(today) - 1) ? "today" : "" : (idx === getDate(today) - 1) ? "today" : ""}`}
       key={idx}
       onClick={handleClick}
       onMouseEnter={handleHover}

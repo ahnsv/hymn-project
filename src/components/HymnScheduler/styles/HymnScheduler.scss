@@ -41,7 +41,7 @@
       }
 
       & > .in_range {
-        background: rgba(135, 206, 235, 0.5);
+        background: rgba(109, 123, 183, 0.5);
       }
 
       & > .day-indexes {
@@ -62,7 +62,7 @@
 
       & > .current-mth-days {
         &:hover {
-          background: gray;
+          background: #0091ff;
           color: whitesmoke;
         }
 
@@ -72,7 +72,8 @@
         }
 
         &.today {
-          background: yellow;
+          background: #673AB7;
+          color: whitesmoke;
         }
       }
     }
