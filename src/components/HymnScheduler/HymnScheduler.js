@@ -23,7 +23,7 @@ import HymnSchedulerRegisterForm from "./HymnSchedulerRegisterForm";
  * @description Highest Component of HymnScheduler
  * @description Passes down today information
  */
-const HymnScheduler = () => {
+const HymnSchedulerOriginal = () => {
   const today = new Date();
   return (
     <div className="hymn-scheduler">
@@ -47,10 +47,12 @@ const HymnSchedulerWithDialog = () => {
   const [dialog, setDialog] = useState(false);
   // TODO: change this into custom hook
   const dialogEffect = (param, sideEffect) => useEffect(() => {
-    if (dialog === true) {
-      param([]);
-    }
     sideEffect();
+    return () => {
+      if (dialog === true) {
+        param([]);
+      }
+    };
   }, [dialog]);
   const [datesPicked, pickDates] = useState([]);
   return (
@@ -147,7 +149,6 @@ const HymnSchedulerMonth = ({ today, setDialog, pickDates, dialogEffect }) => {
     (parseInt(range[0].innerText) < parseInt(e.target.innerText))
       ? pickDates([formatDate(range[0].innerText), formatDate(e.target.innerText)])
       : pickDates([formatDate(e.target.innerText), formatDate(range[0].innerText)]);
-    //  TODO: block hovering when it's clicked
   }
 
   function handleHover(e) {
@@ -206,4 +207,4 @@ const HymnSchedulerMonth = ({ today, setDialog, pickDates, dialogEffect }) => {
   );
 };
 
-export { HymnScheduler, HymnSchedulerWithDialog, HymnSchedulerWithWeekly };
+export { HymnSchedulerOriginal, HymnSchedulerWithDialog, HymnSchedulerWithWeekly };

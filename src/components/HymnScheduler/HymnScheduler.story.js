@@ -1,11 +1,11 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 // import { HymnScheduler } from './index';
-import { HymnScheduler, HymnSchedulerWithDialog, HymnSchedulerWithWeekly } from "./HymnScheduler";
+import { HymnSchedulerOriginal, HymnSchedulerWithDialog, HymnSchedulerWithWeekly } from "./HymnScheduler";
 
 storiesOf('HymnScheduler', module)
   .add('default', () => (
-    <HymnScheduler />
+    <HymnSchedulerOriginal/>
   ))
   .add("with weekly", () => (
     <HymnSchedulerWithWeekly/>

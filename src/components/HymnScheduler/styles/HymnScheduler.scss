@@ -1,5 +1,5 @@
 .hymn-scheduler {
-  font-family: 'Blank Sans Bold', sans-serif;
+  font-family: 'Blank Sans', 'Spoqa Han Sans', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,6 +25,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      font-weight: bold;
       font-size: 3em;
       margin: 3vh 0;
     }
@@ -82,10 +83,10 @@
   .hymn-schedule-register-form {
     visibility: visible;
     opacity: 1;
-    transition: visibility 500ms ease-in-out, opacity 500ms ease-in-out;
+    transition: visibility 300ms ease-in-out, opacity 300ms ease-in-out;
     position: absolute;
     width: 100%;
-    height: 98%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -95,18 +96,26 @@
     &.hidden {
       visibility: hidden;
       opacity: 0;
-      transition: visibility 500ms ease-in-out, opacity 500ms ease-in-out;
+      transition: visibility 300ms ease-in-out, opacity 300ms ease-in-out;
+    }
+
+    & > .register-form--background {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
     }
 
     & > form {
       background: whitesmoke;
       height: 50vh;
       width: 66vw;
-      border-radius: 3px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      z-index: 1;
+      border-radius: 10px;
 
       & > .hymn-form-row {
         display: flex;
@@ -129,7 +138,7 @@
         }
 
         & ::placeholder {
-          font-family: inherit;
+          //font-family: 'Blank Sans', sans-serif;
         }
       }
     }
