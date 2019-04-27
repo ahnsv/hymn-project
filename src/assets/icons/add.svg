@@ -1,0 +1,9 @@
+<svg id="레이어_1" data-name="레이어 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <defs>
+        <style>.cls-1{fill:#00a3ee;}.cls-2{fill:#fff;}</style>
+    </defs>
+    <title>HYMN PROJECT 4-2</title>
+    <circle class="cls-1" cx="50" cy="50.44" r="50"/>
+    <rect class="cls-2" x="25" y="48.94" width="50" height="3"/>
+    <rect class="cls-2" x="25" y="48.94" width="50" height="3" transform="translate(100.44 0.44) rotate(90)"/>
+</svg>

@@ -42,7 +42,7 @@ const HymnSchedulerWithWeekly = () => {
   );
 };
 
-const HymnSchedulerWithDialog = () => {
+const HymnSchedulerWithDialog = ({ setTitle }) => {
   const today = new Date();
   const [dialog, setDialog] = useState(false);
   // TODO: change this into custom hook
@@ -57,7 +57,13 @@ const HymnSchedulerWithDialog = () => {
   const [datesPicked, pickDates] = useState([]);
   return (
     <div className="hymn-scheduler">
-      <HymnSchedulerMonth today={today} setDialog={setDialog} pickDates={pickDates} dialogEffect={dialogEffect}/>
+      <HymnSchedulerMonth
+        today={today}
+        setDialog={setDialog}
+        pickDates={pickDates}
+        dialogEffect={dialogEffect}
+        setTitle={setTitle}
+      />
       <button className={`add-schedule`} onClick={() => setDialog(true)}>+</button>
       <HymnSchedulerRegisterForm
         start={datesPicked[0]}
@@ -78,27 +84,48 @@ const HymnSchedulerWithDialog = () => {
  * @param dialogEffect
  * @constructor
  */
-const HymnSchedulerMonth = ({ today, setDialog, pickDates, dialogEffect }) => {
+const HymnSchedulerMonth = ({ today, setDialog, pickDates, setTitle, ...rest }) => {
   const [index, setIndex] = useState(today);
+  // BUG: query selector all is fucking broken
+  const days = document.querySelectorAll(".scheduler-month-wrapper > div");
   useEffect(() => {
     setRange([]);
     setFocusedNode(null);
+    setTitle(getYear(index));
+    days.forEach((d, idx) => {
+      if (idx % 7 === 0) {
+        d.style.color = "#D80351";
+      } else if (idx % 7 === 6) {
+        d.style.color = "#00A3EE";
+      }
+    });
     return () => {
-
+      days.forEach((d, idx) => {
+        if (idx % 7 === 0) {
+          d.style.color = "inherit";
+        } else if (idx % 7 === 6) {
+          d.style.color = "inherit";
+        }
+      });
     };
   }, [index]);
 
   const [range, setRange] = useState([]);
   // call dialog effect from parent
-  dialogEffect(setRange, () => {
-    document.querySelector(".scheduler-month-wrapper").childNodes.forEach(c => {
-      c.classList.remove("in_range");
+  if (rest.length > 0) {
+    rest[0](setRange, () => {
+      document.querySelector(".scheduler-month-wrapper").childNodes.forEach(c => {
+        c.classList.remove("in_range");
+      });
     });
-  });
+  }
   useEffect(() => {
     range.forEach(r => r.classList.add("selected"));
     return () => {
-      range.forEach(r => r.classList.remove("selected"));
+      document.querySelectorAll(".selected").forEach(r => r.classList.remove("selected"));
+      document.querySelector(".scheduler-month-wrapper").childNodes.forEach(c => {
+        c.classList.remove("in_range");
+      });
     };
   }, [range]);
 
@@ -166,7 +193,10 @@ const HymnSchedulerMonth = ({ today, setDialog, pickDates, dialogEffect }) => {
   const nextMonthIdx = addDays(endDate, 1);
   const daysInMonth = eachDay(startDate, endDate).map((d, idx) => (
     <div
-      className={`current-mth-days ${(index === today) ? (idx === getDate(today) - 1) ? "today" : "" : (idx === getDate(today) - 1) ? "today" : ""}`}
+      className={`current-mth-days 
+      ${(index === today) ? (idx === getDate(today) - 1)
+        ? "today" : "" : (idx === getDate(today) - 1 && getMonth(d) === getMonth(today))
+        ? "today" : ""}`}
       key={idx}
       onClick={handleClick}
       onMouseEnter={handleHover}

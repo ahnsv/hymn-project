@@ -1,0 +1,18 @@
+<svg id="레이어_1" data-name="레이어 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+    <defs>
+        <style>.cls-1{fill:#fff;}</style>
+    </defs>
+    <title>HYMN PROJECT 4</title>
+    <path class="cls-1"
+          d="M43,4a1,1,0,0,1,1,1V43a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V5A1,1,0,0,1,5,4H43m0-4H5A5,5,0,0,0,0,5V43a5,5,0,0,0,5,5H43a5,5,0,0,0,5-5V5a5,5,0,0,0-5-5Z"/>
+    <path class="cls-1"
+          d="M44.57,15H3.43C1.54,15,0,14.1,0,13s1.54-2,3.43-2H44.57c1.89,0,3.43.9,3.43,2S46.46,15,44.57,15Z"/>
+    <rect class="cls-1" x="11" y="19" width="4" height="4" rx="1" ry="1" transform="translate(-8 34) rotate(-90)"/>
+    <rect class="cls-1" x="22" y="19" width="4" height="4" rx="1" ry="1" transform="translate(3 45) rotate(-90)"/>
+    <rect class="cls-1" x="33" y="19" width="4" height="4" rx="1" ry="1" transform="translate(14 56) rotate(-90)"/>
+    <rect class="cls-1" x="11" y="28" width="4" height="4" rx="1" ry="1" transform="translate(-17 43) rotate(-90)"/>
+    <rect class="cls-1" x="22" y="28" width="4" height="4" rx="1" ry="1" transform="translate(-6 54) rotate(-90)"/>
+    <rect class="cls-1" x="33" y="28" width="4" height="4" rx="1" ry="1" transform="translate(5 65) rotate(-90)"/>
+    <rect class="cls-1" x="11" y="36" width="4" height="4" rx="1" ry="1" transform="translate(-25 51) rotate(-90)"/>
+    <rect class="cls-1" x="22" y="36" width="4" height="4" rx="1" ry="1" transform="translate(-14 62) rotate(-90)"/>
+</svg>

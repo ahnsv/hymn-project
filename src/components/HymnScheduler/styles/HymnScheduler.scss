@@ -1,5 +1,5 @@
 .hymn-scheduler {
-  font-family: 'Blank Sans', 'Spoqa Han Sans', sans-serif;
+  font-family: 'Nanum Square', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,6 +28,15 @@
       font-weight: bold;
       font-size: 3em;
       margin: 3vh 0;
+
+      .scheduler-month-month {
+        font-size: 2em;
+        font-weight: bold;
+      }
+
+      .scheduler-month-text {
+        font-weight: 100;
+      }
     }
 
     .scheduler-month-wrapper {
@@ -38,7 +47,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 1px solid rgba(69, 66, 66, 0.55);
+        letter-spacing: 2px;
+        font-weight: bolder;
       }
 
       & > .in_range {
@@ -58,10 +68,12 @@
       }
 
       & > .prev-mth-days, .next-mth-days {
-        opacity: 0.2;
+        opacity: 0.3;
       }
 
       & > .current-mth-days {
+        color: #666666;
+
         &:hover {
           background: #0091ff;
           color: whitesmoke;
@@ -73,8 +85,8 @@
         }
 
         &.today {
-          background: #673AB7;
-          color: whitesmoke;
+          border: 3px solid darkgrey;
+          border-radius: 100%;
         }
       }
     }
@@ -152,7 +164,7 @@
     height: 50px;
     width: 50px;
     border: none;
-    background: blueviolet;
+    background: #00A3EE;
     color: white;
     font-size: 2em;
   }
