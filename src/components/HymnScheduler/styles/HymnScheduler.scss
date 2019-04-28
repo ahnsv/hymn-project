@@ -27,7 +27,6 @@
       justify-content: center;
       font-weight: bold;
       font-size: 3em;
-      margin: 3vh 0;
 
       .scheduler-month-month {
         font-size: 2em;
@@ -36,6 +35,7 @@
 
       .scheduler-month-text {
         font-weight: 100;
+        font-size: 0.8em;
       }
     }
 
@@ -49,10 +49,17 @@
         justify-content: center;
         letter-spacing: 2px;
         font-weight: bolder;
+        color: #666666;
       }
 
       & > .in_range {
         background: rgba(109, 123, 183, 0.5);
+        border-radius: 0;
+        margin: 20% 0;
+      }
+
+      & > .in_range:first-child {
+        border-radius: 10px 0 0 10px;
       }
 
       & > .day-indexes {
@@ -73,20 +80,20 @@
 
       & > .current-mth-days {
         color: #666666;
-
-        &:hover {
-          background: #0091ff;
-          color: whitesmoke;
-        }
+        //border-radius: 10px;
+        //&:hover {
+        //  background: #0091ff;
+        //  color: whitesmoke;
+        //}
 
         &.selected {
-          background: #4131ff;
+          background: #F5D908;
           color: whitesmoke;
         }
 
         &.today {
           border: 3px solid darkgrey;
-          border-radius: 100%;
+          border-radius: 10px;
         }
       }
     }

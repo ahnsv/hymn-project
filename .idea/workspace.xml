@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c26bd276-fcdc-4344-9053-98646a1c705f" name="hymn-project" comment="fonts add/remove, assets add, apply ui design">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/icons/todo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/gauge.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HymnHeader/HymnHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HymnHeader/HymnHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HymnHeader/styles/HymnHeader.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HymnHeader/styles/HymnHeader.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/HymnScheduler/HymnScheduler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HymnScheduler/HymnScheduler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HymnScheduler/styles/HymnScheduler.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HymnScheduler/styles/HymnScheduler.scss" afterDir="false" />
     </list>
     <list id="5e044b9d-6f3c-4925-b931-6377b0522fb6" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -22,14 +27,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/HymnScheduler.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="233" column="14" lean-forward="true" selection-start-line="233" selection-start-column="14" selection-end-line="233" selection-end-column="14" />
+            <state relative-caret-position="1349">
+              <caret line="244" column="17" selection-start-line="244" selection-start-column="17" selection-end-line="244" selection-end-column="17" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/HymnHeader/styles/HymnHeader.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="227">
+              <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/HymnHeader/HymnHeader.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="235">
+              <caret line="25" column="26" lean-forward="true" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -46,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/styles/HymnScheduler.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4579">
-              <caret line="168" column="19" selection-start-line="168" selection-start-column="19" selection-end-line="168" selection-end-column="19" />
+            <state relative-caret-position="53">
+              <caret line="57" column="22" selection-start-line="57" selection-start-column="22" selection-end-line="57" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -89,8 +112,8 @@
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/components/HymnHeader/HymnHeader.js" />
         <option value="$PROJECT_DIR$/src/components/HymnHeader/styles/HymnHeader.scss" />
-        <option value="$PROJECT_DIR$/src/components/HymnScheduler/styles/HymnScheduler.scss" />
         <option value="$PROJECT_DIR$/src/components/HymnScheduler/HymnScheduler.js" />
+        <option value="$PROJECT_DIR$/src/components/HymnScheduler/styles/HymnScheduler.scss" />
       </list>
     </option>
   </component>
@@ -117,13 +140,38 @@
             <path>
               <item name="hymn-project" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="E:\workspace\hymn-project" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="public" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="hymn-project" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="E:\workspace\hymn-project" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="hymn-project" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="E:\workspace\hymn-project" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="assets" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="hymn-project" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="E:\workspace\hymn-project" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="assets" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="icons" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="hymn-project" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="E:\workspace\hymn-project" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="components" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="hymn-project" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="E:\workspace\hymn-project" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="components" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="HymnHeader" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="hymn-project" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
@@ -269,7 +317,7 @@
       <workItem from="1556358078038" duration="10461000" />
       <workItem from="1556369003992" duration="46000" />
       <workItem from="1556426975083" duration="644000" />
-      <workItem from="1556427705437" duration="1228000" />
+      <workItem from="1556427705437" duration="4803000" />
     </task>
     <task id="LOCAL-00005" summary="package json update">
       <created>1556020003242</created>
@@ -366,7 +414,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63351000" />
+    <option name="totallyTimeSpent" value="66926000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -381,7 +429,7 @@
     <frame x="-7" y="-7" width="1295" height="735" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49357328" weight="0.25079367" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49357328" visible="true" weight="0.25079367" />
       <window_info id="Structure" order="1" sideWeight="0.50088495" side_tool="true" weight="0.25079873" />
       <window_info id="npm" order="2" sideWeight="0.50642675" side_tool="true" weight="0.25079367" />
       <window_info id="Favorites" order="3" sideWeight="0.50259066" side_tool="true" weight="0.25079367" />
@@ -396,7 +444,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" weight="0.328152" />
       <window_info anchor="bottom" id="Messages" order="9" weight="0.328152" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5007987" side_tool="true" weight="0.32920355" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49920127" weight="0.328152" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49920127" visible="true" weight="0.328152" />
       <window_info anchor="bottom" id="GraphQL" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -599,20 +647,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/HymnHeader/styles/HymnHeader.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/HymnHeader/HymnHeader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="22" column="50" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/manifest.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -678,20 +712,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/styles/HymnScheduler.scss">
+    <entry file="file://$PROJECT_DIR$/src/components/HymnHeader/styles/HymnHeader.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4579">
-          <caret line="168" column="19" selection-start-line="168" selection-start-column="19" selection-end-line="168" selection-end-column="19" />
+        <state relative-caret-position="227">
+          <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/HymnScheduler.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="233" column="14" lean-forward="true" selection-start-line="233" selection-start-column="14" selection-end-line="233" selection-end-column="14" />
+        <state relative-caret-position="1349">
+          <caret line="244" column="17" selection-start-line="244" selection-start-column="17" selection-end-line="244" selection-end-column="17" />
           <folding>
             <element signature="e#0#51#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/HymnHeader/HymnHeader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="25" column="26" lean-forward="true" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/styles/HymnScheduler.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="53">
+          <caret line="57" column="22" selection-start-line="57" selection-start-column="22" selection-end-line="57" selection-end-column="22" />
         </state>
       </provider>
     </entry>

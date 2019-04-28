@@ -6,13 +6,13 @@ const HymnHeader = ({ title, left, right, setTitle }) => {
   return (
     <div className={`hymn-header`}>
       {/* make img to svg */}
-      <div className={`header-left`}>
+      <div className={`header--left`}>
         {left}
       </div>
       <div className={`header--title`}>
         {title}
       </div>
-      <div className={`header-right`}>
+      <div className={`header--right`}>
         {right}
       </div>
     </div>

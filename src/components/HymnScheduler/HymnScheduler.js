@@ -122,10 +122,10 @@ const HymnSchedulerMonth = ({ today, setDialog, pickDates, setTitle, ...rest }) 
   useEffect(() => {
     range.forEach(r => r.classList.add("selected"));
     return () => {
-      document.querySelectorAll(".selected").forEach(r => r.classList.remove("selected"));
-      // document.querySelector(".scheduler-month-wrapper").childNodes.forEach(c => {
-      //   c.classList.remove("in_range");
-      // });
+      document.querySelector(".scheduler-month-wrapper").childNodes.forEach(c => {
+        c.classList.remove("in_range");
+        c.classList.remove("selected")
+      });
     };
   }, [range]);
 
@@ -234,11 +234,19 @@ const HymnSchedulerMonth = ({ today, setDialog, pickDates, setTitle, ...rest }) 
         </div>
         <div className={`scheduler-month-text`}>
           {
-            ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'][getMonth(index)]
+            ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"][getMonth(index)]
           }
         </div>
       </div>
       <Swipeable onSwipedRight={handlePrev} onSwipedLeft={handleNext} className={`scheduler-month-wrapper`}>
+        {
+          ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"].map((d, idx) => (
+            <div key={idx}
+                 className={`day-indexes`} style={{'color': `${idx === 0 ? '#D80351' : idx === 6 ? '#00A3EE' : 'inherit'}`}}>
+              <div>{d}</div>
+            </div>
+          ))
+        }
         {prevMthDays}
         {daysInMonth}
         {nextMthDays}
