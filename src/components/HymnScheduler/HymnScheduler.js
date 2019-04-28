@@ -7,6 +7,7 @@ import {
   endOfWeek,
   format,
   getDate,
+  getDay,
   getMonth,
   getYear,
   startOfMonth,
@@ -23,11 +24,28 @@ import HymnSchedulerRegisterForm from "./HymnSchedulerRegisterForm";
  * @description Highest Component of HymnScheduler
  * @description Passes down today information
  */
-const HymnSchedulerOriginal = () => {
+const HymnSchedulerOriginal = ({ isVisible, setDialog }) => {
   const today = new Date();
   return (
-    <div className="hymn-scheduler">
+    <div className="hymn-scheduler" style={{ "display": (isVisible) ? "block" : "none" }}>
       <HymnSchedulerMonth today={today}/>
+    </div>
+  );
+};
+
+const HymnSchedulerVertical = (props) => {
+  const today = new Date();
+  const [numOfMonths, setNumOfMonths] = useState(12);
+  const range = (num) => {
+    let res = [];
+    for (let i = 1; i <= num; i++) {
+      res.push(<HymnSchedulerMonth indexDate={addMonths(today, i)} today={today}/>);
+    }
+    return res;
+  };
+  return (
+    <div className={`hymn-scheduler-vertical`}>
+      { range(numOfMonths) }
     </div>
   );
 };
@@ -62,7 +80,7 @@ const HymnSchedulerWithDialog = ({ setTitle }) => {
         setDialog={setDialog}
         pickDates={pickDates}
         dialogEffect={dialogEffect}
-        setTitle={setTitle}
+        // setTitle={setTitle}
       />
       <button className={`add-schedule`} onClick={() => setDialog(true)}>+</button>
       <HymnSchedulerRegisterForm
@@ -76,6 +94,47 @@ const HymnSchedulerWithDialog = ({ setTitle }) => {
 };
 
 
+const HymnSchedulerCalendarWithInput = (props) => {
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  return (
+    <div className={`hymn-scheduler hymn-scheduler-calendar-with-input`}>
+      <div className="inputs">
+        <div className="start-date">
+          <label>시작일</label>
+          <input
+            onClick={() => setStartDate(true)}
+
+          />
+        </div>
+        <div className="end-date">
+          <label>종료일</label>
+          <input onClick={() => setEndDate(true)}/>
+        </div>
+      </div>
+      {/*  HymnSchedulerMonth in vertical View */}
+      <HymnSchedulerVertical />
+    </div>
+  );
+};
+
+const HymnSchedulerDay = ({index, today, date, idx, handleClick, handleHover, isCurrent, isPrev, isNext}) => {
+  return (
+    <div
+      className={`${isCurrent ? 'current-mth-days' : isNext ? 'next-mth-days' : 'prev-mth-days'} 
+      ${(index === today) ? (idx === getDate(today) - 1)
+        ? "today" : "" : (idx === getDate(today) - 1 && getMonth(date) === getMonth(today))
+        ? "today" : ""}`}
+      key={idx}
+      style={{ "color": `${getDay(date) === 0 ? "#D80351" : getDay(date) === 6 ? "#00A3EE" : ""}` }}
+      onClick={handleClick}
+      onMouseEnter={handleHover}
+    >
+      {getDate(date)}
+    </div>
+  )
+}
+
 /**
  * @description Hymn Scheduler Monthly Calendar
  * @param today Date
@@ -84,30 +143,12 @@ const HymnSchedulerWithDialog = ({ setTitle }) => {
  * @param dialogEffect
  * @constructor
  */
-const HymnSchedulerMonth = ({ today, setDialog, pickDates, setTitle, ...rest }) => {
-  const [index, setIndex] = useState(today);
-  // BUG: query selector all is fucking broken
-  const days = document.querySelectorAll(".scheduler-month-wrapper > div");
+const HymnSchedulerMonth = ({ today, indexDate, setDialog, pickDates, ...rest }) => {
+  const [index, setIndex] = useState((indexDate) ? indexDate : today);
   useEffect(() => {
     setRange([]);
     setFocusedNode(null);
-    setTitle(getYear(index));
-    days.forEach((d, idx) => {
-      if (idx % 7 === 0) {
-        d.style.color = "#D80351";
-      } else if (idx % 7 === 6) {
-        d.style.color = "#00A3EE";
-      }
-    });
-    return () => {
-      days.forEach((d, idx) => {
-        if (idx % 7 === 0) {
-          d.style.color = "inherit";
-        } else if (idx % 7 === 6) {
-          d.style.color = "inherit";
-        }
-      });
-    };
+    // setTitle(getYear(index));
   }, [index]);
 
   const [range, setRange] = useState([]);
@@ -124,7 +165,7 @@ const HymnSchedulerMonth = ({ today, setDialog, pickDates, setTitle, ...rest }) 
     return () => {
       document.querySelector(".scheduler-month-wrapper").childNodes.forEach(c => {
         c.classList.remove("in_range");
-        c.classList.remove("selected")
+        c.classList.remove("selected");
       });
     };
   }, [range]);
@@ -139,8 +180,7 @@ const HymnSchedulerMonth = ({ today, setDialog, pickDates, setTitle, ...rest }) 
       for (let i = wrapper.indexOf(range[0]) + 1; i < wrapper.indexOf(focusedNode); i++) {
         wrapper[i].classList.add("in_range");
       }
-    }
-    if (wrapper.indexOf(range[0]) > wrapper.indexOf(focusedNode)) {
+    } else if (wrapper.indexOf(range[0]) > wrapper.indexOf(focusedNode)) {
       for (let i = wrapper.indexOf(focusedNode) + 1; i < wrapper.indexOf(range[0]); i++) {
         wrapper[i].classList.add("in_range");
       }
@@ -192,33 +232,13 @@ const HymnSchedulerMonth = ({ today, setDialog, pickDates, setTitle, ...rest }) 
   const prevMonthIdx = subDays(startDate, 1);
   const nextMonthIdx = addDays(endDate, 1);
   const daysInMonth = eachDay(startDate, endDate).map((d, idx) => (
-    <div
-      className={`current-mth-days 
-      ${(index === today) ? (idx === getDate(today) - 1)
-        ? "today" : "" : (idx === getDate(today) - 1 && getMonth(d) === getMonth(today))
-        ? "today" : ""}`}
-      key={idx}
-      onClick={handleClick}
-      onMouseEnter={handleHover}
-    >
-      {getDate(d)}
-    </div>
+    <HymnSchedulerDay today={today} index={index} idx={idx} date={d} isCurrent={true} handleClick={handleClick} handleHover={handleHover}/>
   ));
   const prevMthDays = eachDay(startOfWeek(prevMonthIdx), prevMonthIdx).map((d, idx) => (
-    <div
-      className="prev-mth-days"
-      key={`prev-day-${idx}`}
-    >
-      {getDate(d)}
-    </div>
+    <HymnSchedulerDay today={today} index={index} idx={`prev-day-${idx}`} date={d} isPrev={true} handleClick={handleClick} handleHover={handleHover}/>
   ));
   const nextMthDays = eachDay(nextMonthIdx, endOfWeek(nextMonthIdx)).map((d, idx) => (
-    <div
-      className="next-mth-days"
-      key={`next-day-${idx}`}
-    >
-      {getDate(d)}
-    </div>
+    <HymnSchedulerDay today={today} index={index} idx={`next-day-${idx}`} date={d} isNext={true} handleClick={handleClick} handleHover={handleHover}/>
   ));
   const handlePrev = () => {
     setIndex(subMonths(index, 1));
@@ -242,7 +262,8 @@ const HymnSchedulerMonth = ({ today, setDialog, pickDates, setTitle, ...rest }) 
         {
           ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"].map((d, idx) => (
             <div key={idx}
-                 className={`day-indexes`} style={{'color': `${idx === 0 ? '#D80351' : idx === 6 ? '#00A3EE' : 'inherit'}`}}>
+                 className={`day-indexes`}
+                 style={{ "color": `${idx === 0 ? "#D80351" : idx === 6 ? "#00A3EE" : "inherit"}` }}>
               <div>{d}</div>
             </div>
           ))
@@ -255,4 +276,4 @@ const HymnSchedulerMonth = ({ today, setDialog, pickDates, setTitle, ...rest }) 
   );
 };
 
-export { HymnSchedulerOriginal, HymnSchedulerWithDialog, HymnSchedulerWithWeekly };
+export { HymnSchedulerOriginal, HymnSchedulerWithDialog, HymnSchedulerWithWeekly, HymnSchedulerCalendarWithInput };

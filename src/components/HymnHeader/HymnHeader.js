@@ -2,7 +2,7 @@ import React from "react";
 import "./styles/HymnHeader.scss";
 import hamburger from "../../assets/icons/hamburger.svg";
 
-const HymnHeader = ({ title, left, right, setTitle }) => {
+const HymnHeader = ({ title, left, right }) => {
   return (
     <div className={`hymn-header`}>
       {/* make img to svg */}

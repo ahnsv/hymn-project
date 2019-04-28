@@ -1,7 +1,7 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 // import { HymnScheduler } from './index';
-import { HymnSchedulerOriginal, HymnSchedulerWithDialog, HymnSchedulerWithWeekly } from "./HymnScheduler";
+import { HymnSchedulerOriginal, HymnSchedulerWithDialog, HymnSchedulerWithWeekly, HymnSchedulerCalendarWithInput } from "./HymnScheduler";
 
 storiesOf('HymnScheduler', module)
   .add('default', () => (
@@ -12,4 +12,7 @@ storiesOf('HymnScheduler', module)
   ))
   .add("with dialog", () => (
     <HymnSchedulerWithDialog/>
+  ))
+  .add("with input", () => (
+    <HymnSchedulerCalendarWithInput/>
   ));
