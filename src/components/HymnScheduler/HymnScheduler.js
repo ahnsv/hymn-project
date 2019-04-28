@@ -123,9 +123,9 @@ const HymnSchedulerMonth = ({ today, setDialog, pickDates, setTitle, ...rest }) 
     range.forEach(r => r.classList.add("selected"));
     return () => {
       document.querySelectorAll(".selected").forEach(r => r.classList.remove("selected"));
-      document.querySelector(".scheduler-month-wrapper").childNodes.forEach(c => {
-        c.classList.remove("in_range");
-      });
+      // document.querySelector(".scheduler-month-wrapper").childNodes.forEach(c => {
+      //   c.classList.remove("in_range");
+      // });
     };
   }, [range]);
 
@@ -228,7 +228,17 @@ const HymnSchedulerMonth = ({ today, setDialog, pickDates, setTitle, ...rest }) 
   };
   return (
     <div className="hymn-scheduler-month">
-      <Swipeable onSwipedRight={handlePrev} onSwipedLeft={handleNext}>
+      <div className={`scheduler-month-nav`}>
+        <div className={`scheduler-month-month`}>
+          {getMonth(index) + 1}
+        </div>
+        <div className={`scheduler-month-text`}>
+          {
+            ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'][getMonth(index)]
+          }
+        </div>
+      </div>
+      <Swipeable onSwipedRight={handlePrev} onSwipedLeft={handleNext} className={`scheduler-month-wrapper`}>
         {prevMthDays}
         {daysInMonth}
         {nextMthDays}
