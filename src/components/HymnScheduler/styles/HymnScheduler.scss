@@ -20,6 +20,9 @@
   }
 
   .hymn-scheduler-month {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     .scheduler-month-nav {
       display: flex;
       flex-direction: column;
@@ -27,21 +30,29 @@
       justify-content: center;
       font-weight: bold;
       font-size: 3em;
+      background-color: #00A3EE;
+      color: #FFFFFF;
+      padding: 3vh 0;
+      .scheduler-month-year {
+        font-size: 0.5em;
+        font-weight: lighter;
+      }
 
       .scheduler-month-month {
         font-size: 2em;
         font-weight: bold;
       }
 
-      .scheduler-month-text {
-        font-weight: 100;
-        font-size: 0.8em;
+      &.short {
+        .scheduler-month-year {
+          display: none;
+        }
       }
     }
-
     .scheduler-month-wrapper {
       display: grid;
       grid-template: repeat(7, 50px) / repeat(7, 50px);
+      align-self: center;
 
       & > div {
         display: flex;
@@ -50,16 +61,6 @@
         letter-spacing: 2px;
         font-weight: bolder;
         color: #666666;
-      }
-
-      & > .in_range {
-        background: rgba(109, 123, 183, 0.5);
-        border-radius: 0;
-        margin: 20% 0;
-      }
-
-      & > .in_range:first-child {
-        border-radius: 10px 0 0 10px;
       }
 
       & > .day-indexes {
@@ -80,15 +81,12 @@
 
       & > .current-mth-days {
         color: #666666;
-        //border-radius: 10px;
-        //&:hover {
-        //  background: #0091ff;
-        //  color: whitesmoke;
-        //}
 
         &.selected {
           background: #F5D908;
           color: whitesmoke;
+          border-radius: 10px;
+          transition: color 300ms linear, background 150ms linear;
         }
 
         &.today {
