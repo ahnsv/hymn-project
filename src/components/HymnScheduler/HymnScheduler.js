@@ -18,17 +18,12 @@ import {
 import { Swipeable } from "react-swipeable";
 import "./styles/HymnScheduler.scss";
 import HymnSchedulerWeek from "./HymnSchedulerWeek";
-import HymnSchedulerRegisterForm from "./HymnSchedulerRegisterForm";
 import HymnSchedulerDay from "./HymnSchedulerDay";
 
-/**
- * @description Highest Component of HymnScheduler
- * @description Passes down today information
- */
-const HymnSchedulerOriginal = ({ isVisible, setDialog }) => {
+const HymnSchedulerOriginal = (props) => {
   const today = new Date();
   return (
-    <div className="hymn-scheduler" style={{ "display": (isVisible) ? "block" : "none" }}>
+    <div className="hymn-scheduler">
       <HymnSchedulerMonth today={today}/>
     </div>
   );
@@ -36,11 +31,20 @@ const HymnSchedulerOriginal = ({ isVisible, setDialog }) => {
 
 const HymnSchedulerVertical = (props) => {
   const today = new Date();
+  // TODO: pass this to hymn scheduler month
+  const { setSelect } = props;
   const [numOfMonths, setNumOfMonths] = useState(2);
   const range = (num) => {
     let res = [];
-    for (let i = 1; i <= num; i++) {
-      res.push(<HymnSchedulerMonth isShortVersion={true} indexDate={addMonths(today, i)} today={today} key={i}/>);
+    for (let i = 0; i <= num; i++) {
+      res.push(
+        <HymnSchedulerMonth
+          isShortVersion={true}
+          indexDate={addMonths(today, i)}
+          today={today}
+          key={i}
+          setSelectProp={setSelect}
+        />);
     }
     return res;
   };
@@ -63,25 +67,12 @@ const HymnSchedulerWithWeekly = () => {
 
 const HymnSchedulerWithDialog = (props) => {
   const today = new Date();
-  const [dialog, setDialog] = useState(false);
-  // TODO: change this into custom hook
-  const dialogEffect = (param, sideEffect) => useEffect(() => {
-    sideEffect();
-    return () => {
-      if (dialog === true) {
-        param([]);
-      }
-    };
-  }, [dialog]);
   return (
     <div className="hymn-scheduler">
       <HymnSchedulerMonth
         today={today}
-        setDialog={setDialog}
-        dialogEffect={dialogEffect}
-        // setTitle={setTitle}
       />
-      <button className={`add-schedule`} onClick={() => setDialog(true)}>+</button>
+      <button className={`add-schedule`}>+</button>
     </div>
   );
 };
@@ -90,21 +81,41 @@ const HymnSchedulerWithDialog = (props) => {
 const HymnSchedulerCalendarWithInput = (props) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
+  const [select, setSelect] = useState(null);
+  useEffect(() => {
+    if (!select) {
+
+    }
+    else if (select.length <= 1) {
+      setStartDate(select[0]);
+    }
+    else if (select.length === 2) {
+      setEndDate(select[1])
+    }
+    else {
+      setStartDate(select[0]);
+      setEndDate(null);
+      setSelect([]);
+    }
+    console.log(select, startDate, endDate);
+  }, [select]);
+
   return (
     <div className={`hymn-scheduler hymn-scheduler-calendar-with-input`}>
       <div className="inputs">
-        <div className="start-date">
-          <label>시작일</label>
+        <div className="input--start-date">
+          <label htmlFor={`input--start-date`}>시작일</label>
           <input
-            onClick={() => setStartDate(true)}
+            id={`start-date`}
+            value={format(startDate, "YYYY-MM-DD")}
           />
         </div>
         <div className="end-date">
-          <label>종료일</label>
-          <input onClick={() => setEndDate(true)}/>
+          <label htmlFor={`input--end-date`}>종료일</label>
+          <input id={`input--end-date`} value={format(endDate, "YYYY-MM-DD")}/>
         </div>
       </div>
-      <HymnSchedulerVertical/>
+      <HymnSchedulerVertical setSelect={setSelect}/>
     </div>
   );
 };
@@ -118,7 +129,7 @@ const HymnSchedulerCalendarWithInput = (props) => {
  * @param setDialog
  * @constructor
  */
-const HymnSchedulerMonth = ({ today, indexDate, isShortVersion }) => {
+const HymnSchedulerMonth = ({ today, indexDate, isShortVersion, setSelectProp }) => {
   const [index, setIndex] = useState((indexDate) ? indexDate : today);
   const [select, setSelect] = useState(null);
   useEffect(() => {
@@ -127,13 +138,11 @@ const HymnSchedulerMonth = ({ today, indexDate, isShortVersion }) => {
         select.classList.remove("selected");
       }
       setSelect(null);
-    }
+    };
   }, [index]);
-  // const formatDate = (idx) => format(new Date(getYear(index),
-  //   getMonth(index),
-  //   parseInt(idx)), "YYYY-MM-DD");
   useEffect(() => {
     if (select) {
+      // TODO: pull out date info out of DOM element
       select.classList.add("selected");
     }
     return () => {
@@ -143,8 +152,9 @@ const HymnSchedulerMonth = ({ today, indexDate, isShortVersion }) => {
     };
   }, [select]);
 
-  function handleClick(e) {
+  function handleClick(e, date) {
     // Show to-dos and schedules on that day if exists
+    setSelectProp(d => d ? [...d, date] : [date]);
     setSelect(e.target);
   }
 

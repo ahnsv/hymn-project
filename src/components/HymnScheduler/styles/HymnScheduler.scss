@@ -44,6 +44,8 @@
       }
 
       &.short {
+        background-color: white;
+        color: #000;
         .scheduler-month-year {
           display: none;
         }

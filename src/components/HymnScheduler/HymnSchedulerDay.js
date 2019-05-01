@@ -10,7 +10,7 @@ const HymnSchedulerDay = ({ index, today, date, idx, handleClick, handleHover, i
         ? "today" : ""}`}
       key={idx}
       style={{ "color": `${getDay(date) === 0 ? "#D80351" : getDay(date) === 6 ? "#00A3EE" : ""}` }}
-      onClick={handleClick}
+      onClick={(e) => handleClick(e, date)}
       onMouseEnter={handleHover}
     >
       {getDate(date)}
