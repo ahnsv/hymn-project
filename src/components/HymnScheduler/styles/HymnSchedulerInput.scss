@@ -1,0 +1,31 @@
+.inputs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+
+  div {
+    flex: 1 1 auto;
+    font-size: 1em;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    padding: 0 8px;
+
+    &:first-child {
+      clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
+    }
+
+    &:last-child {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 10% 100%);
+    }
+
+    label {
+      font-weight: bold;
+      margin-right: 5px;
+    }
+  }
+
+}
+

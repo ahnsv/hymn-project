@@ -17,6 +17,7 @@ import {
 } from "date-fns";
 import { Swipeable } from "react-swipeable";
 import "./styles/HymnScheduler.scss";
+import "./styles/HymnSchedulerInput.scss";
 import HymnSchedulerWeek from "./HymnSchedulerWeek";
 import HymnSchedulerDay from "./HymnSchedulerDay";
 
@@ -31,7 +32,6 @@ const HymnSchedulerOriginal = (props) => {
 
 const HymnSchedulerVertical = (props) => {
   const today = new Date();
-  // TODO: pass this to hymn scheduler month
   const { setSelect } = props;
   const [numOfMonths, setNumOfMonths] = useState(2);
   const range = (num) => {
@@ -79,23 +79,25 @@ const HymnSchedulerWithDialog = (props) => {
 
 
 const HymnSchedulerCalendarWithInput = (props) => {
-  const [startDate, setStartDate] = useState(null);
+  // TODO: Pass start date with pros, input to div
+  const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(null);
   const [select, setSelect] = useState(null);
+  const dateHandled = (possibleDate) => (possibleDate instanceof Date)
+    ? format(possibleDate, "YYYY-MM-DD")
+    : "날짜를 입력해주세요";
   useEffect(() => {
     if (!select) {
 
-    }
-    else if (select.length <= 1) {
+    } else if (select.length <= 1) {
       setStartDate(select[0]);
-    }
-    else if (select.length === 2) {
-      setEndDate(select[1])
-    }
-    else {
-      setStartDate(select[0]);
+    } else if (select.length === 2) {
+      console.log(select);
+      setEndDate(select[1]);
+    } else {
+      setStartDate(select[3]);
       setEndDate(null);
-      setSelect([]);
+      setSelect(null);
     }
     console.log(select, startDate, endDate);
   }, [select]);
@@ -103,16 +105,15 @@ const HymnSchedulerCalendarWithInput = (props) => {
   return (
     <div className={`hymn-scheduler hymn-scheduler-calendar-with-input`}>
       <div className="inputs">
-        <div className="input--start-date">
+        <div className="start-date">
           <label htmlFor={`input--start-date`}>시작일</label>
-          <input
+          <div
             id={`start-date`}
-            value={format(startDate, "YYYY-MM-DD")}
-          />
+          >{dateHandled(startDate)}</div>
         </div>
         <div className="end-date">
           <label htmlFor={`input--end-date`}>종료일</label>
-          <input id={`input--end-date`} value={format(endDate, "YYYY-MM-DD")}/>
+          <div id={`input--end-date`}>{dateHandled(endDate)}</div>
         </div>
       </div>
       <HymnSchedulerVertical setSelect={setSelect}/>
@@ -123,15 +124,29 @@ const HymnSchedulerCalendarWithInput = (props) => {
 
 /**
  * TODO: refactor this to more reusable component
+ * TODO: how to connect multiple monthly calendar like one component
  * @description Hymn Scheduler Monthly Calendar
  * @description Display schedules on monthly basis
  * @param today {Date}
- * @param setDialog
+ * @param indexDate
+ * @param isShortVersion
+ * @param setSelectProp
  * @constructor
  */
 const HymnSchedulerMonth = ({ today, indexDate, isShortVersion, setSelectProp }) => {
   const [index, setIndex] = useState((indexDate) ? indexDate : today);
   const [select, setSelect] = useState(null);
+  /**
+   * @description get dom elements within range
+   * @param start
+   * @param end
+   */
+  const rangeById = ([start, end]) => {
+    const ids = (elem) => parseInt(elem.id.split("-")[1]);
+    const range = ([start, end]) => [...Array(Math.abs(end - start)).keys()].map(i => i + start);
+    const toElems = (range) => range.map(r => document.querySelector(`#day-${r}`));
+    return toElems(range([start, end].map(ids)));
+  };
   useEffect(() => {
     return () => {
       if (select) {
@@ -142,20 +157,25 @@ const HymnSchedulerMonth = ({ today, indexDate, isShortVersion, setSelectProp })
   }, [index]);
   useEffect(() => {
     if (select) {
-      // TODO: pull out date info out of DOM element
-      select.classList.add("selected");
+      select[0].classList.add("selected");
+      if (select.length > 1) {
+        rangeById(select).forEach((s, idx) => {
+          s.classList.add("selected");
+        });
+      }
     }
     return () => {
       if (select) {
-        select.classList.remove("selected");
+        select[0].classList.remove("selected");
       }
     };
   }, [select]);
 
   function handleClick(e, date) {
     // Show to-dos and schedules on that day if exists
+    e.persist();
     setSelectProp(d => d ? [...d, date] : [date]);
-    setSelect(e.target);
+    setSelect(s => s ? [...s, e.target] : [e.target]);
   }
 
   const startDate = startOfMonth(index);
@@ -163,14 +183,15 @@ const HymnSchedulerMonth = ({ today, indexDate, isShortVersion, setSelectProp })
   const prevMonthIdx = subDays(startDate, 1);
   const nextMonthIdx = addDays(endDate, 1);
   const daysInMonth = eachDay(startDate, endDate).map((d, idx) => (
-    <HymnSchedulerDay today={today} index={index} idx={idx} date={d} isCurrent={true} handleClick={handleClick}/>
+    <HymnSchedulerDay today={today} index={index} idx={idx} key={idx} id={`day-${idx + 1}`} date={d} isCurrent={true}
+                      handleClick={handleClick}/>
   ));
   const prevMthDays = eachDay(startOfWeek(prevMonthIdx), prevMonthIdx).map((d, idx) => (
-    <HymnSchedulerDay today={today} index={index} idx={`prev-day-${idx}`} date={d} isPrev={true}
+    <HymnSchedulerDay today={today} index={index} idx={`prev-day-${idx}`} key={`prev-${idx}`} date={d} isPrev={true}
                       handleClick={handleClick}/>
   ));
   const nextMthDays = eachDay(nextMonthIdx, endOfWeek(nextMonthIdx)).map((d, idx) => (
-    <HymnSchedulerDay today={today} index={index} idx={`next-day-${idx}`} date={d} isNext={true}
+    <HymnSchedulerDay today={today} index={index} idx={`next-day-${idx}`} key={`next-${idx}`} date={d} isNext={true}
                       handleClick={handleClick}/>
   ));
   const handlePrev = () => {

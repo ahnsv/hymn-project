@@ -1,0 +1,24 @@
+.hymn-new-layout {
+  width: 100%;
+  height: 100vh;
+
+  .background-clip {
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+  }
+
+  .main-dock {
+    width: 80%;
+    height: 10vh;
+    background: yellow;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    position: absolute;
+    bottom: 0;
+    left: calc(20% / 2);
+    box-shadow: 2.37px 2.37px 2.37px #00000020;
+  }
+}

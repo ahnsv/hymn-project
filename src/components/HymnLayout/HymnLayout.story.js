@@ -3,6 +3,8 @@ import { storiesOf } from "@storybook/react";
 import HymnLayout from "./HymnLayout";
 import HymnLayoutCard from "./HymnLayoutCard";
 import HymnLayoutRow from "./HymnLayoutRow";
+import HymnNewLayout from './HymnNewLayout'
+import HymnHeader from '../HymnHeader/HymnHeader'
 
 storiesOf('HymnLayout', module)
   .add('default', () => (
@@ -24,4 +26,10 @@ storiesOf('HymnLayout', module)
         <div style={{ background: 'pink' }}>4</div>
       </HymnLayoutCard>
     </HymnLayout>
-  ));
+  ))
+  .add('new layout', () => (
+    <HymnNewLayout>
+      <HymnHeader/>
+      <div className={`main-dock`} style={{}}/>
+    </HymnNewLayout>
+  ))

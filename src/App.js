@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.scss";
 import { HymnSchedulerWithDialog } from "./components/HymnScheduler/HymnScheduler";
 import HymnHeader from "./components/HymnHeader/HymnHeader";
+import HymnNewLayout from "./components/HymnLayout/HymnNewLayout";
 
 class App extends Component {
   state = {
@@ -16,8 +17,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <HymnHeader title={this.state.title}/>
-        <HymnSchedulerWithDialog setTitle={this.setTitle}/>
+        <HymnNewLayout>
+          <HymnHeader/>
+          <div className={`main-dock`} style={{}}/>
+        </HymnNewLayout>
       </div>
     );
   }
