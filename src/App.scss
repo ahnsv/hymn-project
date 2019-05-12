@@ -1,5 +1,24 @@
 .App {
   font-family: 'Nanum Square', sans-serif;
+  overflow: hidden;
   //background: #00A3EE;
   //padding: 1em 0.7em;
+}
+
+.main-dock {
+  &.toggled {
+    animation: scale-slide-up 500ms ease-in forwards;
+  }
+}
+
+@keyframes scale-slide-up {
+  0% {
+    transform: scale(1.0);
+  }
+  50% {
+    transform: scaleY(20);
+  }
+  100% {
+    transform: scale(20);
+  }
 }

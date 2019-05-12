@@ -53,7 +53,7 @@
     }
     .scheduler-month-wrapper {
       display: grid;
-      grid-template: repeat(7, 50px) / repeat(7, 50px);
+      grid-template: repeat(7, 8vh) / repeat(7, 8vh);
       align-self: center;
 
       & > div {

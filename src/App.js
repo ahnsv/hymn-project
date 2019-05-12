@@ -1,29 +1,43 @@
-import React, { Component } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./App.scss";
-import { HymnSchedulerWithDialog } from "./components/HymnScheduler/HymnScheduler";
 import HymnHeader from "./components/HymnHeader/HymnHeader";
 import HymnNewLayout from "./components/HymnLayout/HymnNewLayout";
+import { Swipeable } from "react-swipeable";
+import HymnTodoLayout from "./components/HymnLayout/HymnTodoLayout";
+import { HymnSchedulerWithDialog } from "./components/HymnScheduler/HymnScheduler";
+import gauge from './assets/icons/gauge.svg'
 
-class App extends Component {
-  state = {
-    title: ""
-  };
-  setTitle = (title) => {
-    this.setState({
-      title: title
-    });
-  };
+const App = (props) => {
+  const imgGauge = (<img src={gauge} alt={`gauge`}/>);
+  const [todoToggle, setTodoToggle] = useState(false);
+  const [handleElements, setHandleElements] = useState(null);
+  const todoLayout = document.querySelector('.todo-layout');
+  const todoRef = useRef(todoLayout);
+  useEffect(() => {
+    if (todoToggle) {
+      setTimeout(()=> {
+        setHandleElements({
+          theme: 'half',
+          color: '#f5d908',
+        });
+        setTodoToggle(false);
+        todoRef.current.style.display = 'block';
+      }, 1000)
+    }
+  }, [todoToggle]);
 
-  render() {
-    return (
-      <div className="App">
-        <HymnNewLayout>
-          <HymnHeader/>
-          <div className={`main-dock`} style={{}}/>
-        </HymnNewLayout>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="App">
+      <HymnNewLayout {...handleElements}>
+        <HymnHeader />
+        <Swipeable onSwipedUp={() => setTodoToggle(true)}>
+          <div className={`main-dock ${todoToggle ? 'toggled' : ''}`}/>
+        </Swipeable>
+        <HymnTodoLayout refProp={todoRef} style={{display: 'none'}}/>
+      </HymnNewLayout>
+    </div>
+  );
+
+};
 
 export default App;
