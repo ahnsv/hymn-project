@@ -2,14 +2,18 @@
   "name": "hymn-project",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://ahnsv.github.io/hymn-project",
   "dependencies": {
     "date-fns": "^1.30.1",
     "dotenv": "^7.0.0",
+    "localforage": "^1.7.3",
     "lodash": "^4.17.11",
     "node-sass": "^4.11.0",
     "normalize-scss": "^7.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
     "react-swipeable": "^5.1.0",
     "react-transition-group": "^2.9.0",
@@ -18,6 +22,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "npm run build && gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook",
@@ -42,6 +47,7 @@
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-react-hooks": "^1.6.0",
+    "gh-pages": "^2.0.1",
     "prettier": "^1.16.4"
   }
 }

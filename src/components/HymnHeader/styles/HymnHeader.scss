@@ -3,6 +3,7 @@
   flex-direction: row;
   align-items: center;
   padding: 3vh 6vw;
+
   & > div {
     flex: 1;
     text-align: center;
@@ -15,8 +16,14 @@
       font-weight: bolder;
       font-size: 6vw;
       color: white;
+
+      & > a {
+        text-decoration: none;
+        text-decoration-color: unset;
+        color: inherit;
+      }
     }
-    
+
     &.header--right {
       text-align: right;
     }

@@ -1,6 +1,7 @@
 .hymn-new-layout {
   width: 100%;
   height: 100vh;
+  -webkit-overflow-scrolling: touch;
 
   .background-clip {
     z-index: -1;

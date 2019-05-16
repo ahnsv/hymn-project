@@ -2,8 +2,9 @@ import React from "react";
 import "./styles/HymnHeader.scss";
 import hamburger from "../../assets/icons/hamburger.svg";
 import calendar from "../../assets/icons/calendar.svg";
+import { Link } from "react-router-dom";
 
-const HymnHeader = ({ title, left, right }) => {
+const HymnHeader = ({ title, left, right, linkProp }) => {
   return (
     <div className={`hymn-header`}>
       {/* make img to svg */}
@@ -11,10 +12,14 @@ const HymnHeader = ({ title, left, right }) => {
         {left}
       </div>
       <div className={`header--title`}>
-        {title}
+        <Link to={`/`}>
+          {title}
+        </Link>
       </div>
       <div className={`header--right`}>
-        {right}
+        <Link to={linkProp}>
+          {right}
+        </Link>
       </div>
     </div>
   );
@@ -23,7 +28,8 @@ const HymnHeader = ({ title, left, right }) => {
 HymnHeader.defaultProps = {
   left: (<img src={hamburger} alt={`hamburger`}/>),
   title: "HYMN",
-  right: (<img src={calendar} alt={`calendar`}/>)
+  right: (<img src={calendar} alt={`calendar`}/>),
+  linkProp: "/"
 };
 
 export default HymnHeader;

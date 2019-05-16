@@ -5,36 +5,66 @@ import HymnNewLayout from "./components/HymnLayout/HymnNewLayout";
 import { Swipeable } from "react-swipeable";
 import HymnTodoLayout from "./components/HymnLayout/HymnTodoLayout";
 import { HymnSchedulerWithDialog } from "./components/HymnScheduler/HymnScheduler";
-import gauge from './assets/icons/gauge.svg'
+import gauge from "./assets/icons/gauge.svg";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {TransitionGroup, CSSTransition} from 'react-transition-group'
 
 const App = (props) => {
   const imgGauge = (<img src={gauge} alt={`gauge`}/>);
   const [todoToggle, setTodoToggle] = useState(false);
   const [handleElements, setHandleElements] = useState(null);
-  const todoLayout = document.querySelector('.todo-layout');
+  const todoLayout = document.querySelector(".todo-layout");
   const todoRef = useRef(todoLayout);
+  const dock = document.querySelector(".main-dock");
+  const dockRef = useRef(dock);
   useEffect(() => {
     if (todoToggle) {
-      setTimeout(()=> {
+      setTimeout(() => {
         setHandleElements({
-          theme: 'half',
-          color: '#f5d908',
+          theme: "half",
+          color: "#f5d908"
         });
-        setTodoToggle(false);
-        todoRef.current.style.display = 'block';
-      }, 1000)
+        todoRef.current.style.opacity = "1";
+        todoRef.current.style.transition = "opacity 500ms linear";
+        dockRef.current.style.display = "none";
+      }, 300);
     }
   }, [todoToggle]);
+  const Home = ({linkProp}) => {
+    return (
+      <HymnNewLayout {...handleElements}>
+        <HymnHeader linkProp={linkProp}/>
+        <Swipeable onSwipedUp={() => setTodoToggle(true)}>
+          <div className={`main-dock ${todoToggle ? "toggled" : ""}`} ref={dockRef}/>
+        </Swipeable>
+        <HymnTodoLayout refProp={todoRef} style={{ opacity: "0" }}/>
+      </HymnNewLayout>
+    );
+  };
+
+  const Scheduler = () => {
+    return (
+      <HymnNewLayout theme={`half`}>
+        <HymnHeader/>
+        <HymnSchedulerWithDialog/>
+      </HymnNewLayout>
+    );
+  };
 
   return (
     <div className="App">
-      <HymnNewLayout {...handleElements}>
-        <HymnHeader />
-        <Swipeable onSwipedUp={() => setTodoToggle(true)}>
-          <div className={`main-dock ${todoToggle ? 'toggled' : ''}`}/>
-        </Swipeable>
-        <HymnTodoLayout refProp={todoRef} style={{display: 'none'}}/>
-      </HymnNewLayout>
+      <Router>
+        <Route render={({location}) => (
+          <TransitionGroup>
+            <CSSTransition classNames={`page`} key={location.key} timeout={500}>
+              <Switch>
+                <Route exact path={`/`} render={() => (<Home linkProp={`/scheduler`}/>)}/>
+                <Route path={`/scheduler`} component={Scheduler}/>
+              </Switch>
+            </CSSTransition>
+          </TransitionGroup>
+        )}/>
+      </Router>
     </div>
   );
 
