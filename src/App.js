@@ -6,7 +6,7 @@ import { Swipeable } from "react-swipeable";
 import HymnTodoLayout from "./components/HymnLayout/HymnTodoLayout";
 import { HymnSchedulerWithDialog } from "./components/HymnScheduler/HymnSchedulers";
 import gauge from "./assets/icons/gauge.svg";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import {TransitionGroup, CSSTransition} from 'react-transition-group'
 
 const App = (props) => {
@@ -62,7 +62,7 @@ const App = (props) => {
       <Router>
         <Route render={({location}) => (
           <TransitionGroup>
-            <CSSTransition classNames={`page`} key={location.key} timeout={500}>
+            <CSSTransition classNames={`page`} key={location.pathname} timeout={500}>
               <Switch>
                 <Route exact path={`/`} render={() => (<Home linkProp={`/scheduler`}/>)}/>
                 <Route path={`/scheduler`} component={Scheduler}/>

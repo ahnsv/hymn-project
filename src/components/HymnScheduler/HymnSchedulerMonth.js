@@ -5,7 +5,6 @@ import {
   eachDay,
   endOfMonth,
   endOfWeek,
-  getDay,
   getMonth,
   getYear,
   startOfMonth,
@@ -17,7 +16,6 @@ import { Swipeable } from "react-swipeable";
 import "./styles/HymnScheduler.scss";
 import "./styles/HymnSchedulerInput.scss";
 import HymnSchedulerDay from "./HymnSchedulerDay";
-
 
 
 /**
