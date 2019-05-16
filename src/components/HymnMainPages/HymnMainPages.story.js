@@ -4,7 +4,7 @@ import HymnNewLayout from "../HymnLayout/HymnNewLayout";
 import HymnHeader from "../HymnHeader/HymnHeader";
 import HymnTodoLayout from "../HymnLayout/HymnTodoLayout";
 import { Swipeable } from "react-swipeable";
-import { HymnSchedulerWithDialog } from "../HymnScheduler/HymnScheduler";
+import { HymnSchedulerWithDialog } from "../HymnScheduler/HymnSchedulerMonth";
 
 storiesOf("Main Pages", module)
   .add("main page", () => (

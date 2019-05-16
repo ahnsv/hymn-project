@@ -4,7 +4,7 @@ import HymnHeader from "./components/HymnHeader/HymnHeader";
 import HymnNewLayout from "./components/HymnLayout/HymnNewLayout";
 import { Swipeable } from "react-swipeable";
 import HymnTodoLayout from "./components/HymnLayout/HymnTodoLayout";
-import { HymnSchedulerWithDialog } from "./components/HymnScheduler/HymnScheduler";
+import { HymnSchedulerWithDialog } from "./components/HymnScheduler/HymnSchedulers";
 import gauge from "./assets/icons/gauge.svg";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {TransitionGroup, CSSTransition} from 'react-transition-group'
@@ -17,6 +17,7 @@ const App = (props) => {
   const todoRef = useRef(todoLayout);
   const dock = document.querySelector(".main-dock");
   const dockRef = useRef(dock);
+  // TODO: bring back to initial state when transition happens
   useEffect(() => {
     if (todoToggle) {
       setTimeout(() => {
@@ -28,6 +29,11 @@ const App = (props) => {
         todoRef.current.style.transition = "opacity 500ms linear";
         dockRef.current.style.display = "none";
       }, 300);
+      return () => {
+        if (todoToggle) {
+          setHandleElements(null)
+        }
+      }
     }
   }, [todoToggle]);
   const Home = ({linkProp}) => {
@@ -45,7 +51,7 @@ const App = (props) => {
   const Scheduler = () => {
     return (
       <HymnNewLayout theme={`half`}>
-        <HymnHeader/>
+        <HymnHeader title={`CALENDAR`} right={imgGauge}/>
         <HymnSchedulerWithDialog/>
       </HymnNewLayout>
     );
