@@ -5,4 +5,11 @@
   .day-schedule-notifiers {
     //min-width: 30px;
   }
+
+  .day-schedule-notifiers-range {
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    align-self: self-start;
+  }
 }

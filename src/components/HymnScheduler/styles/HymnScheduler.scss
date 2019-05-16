@@ -26,14 +26,29 @@
 
     .scheduler-month-nav {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
       justify-content: center;
       font-weight: bold;
       font-size: 3em;
       background-color: #00A3EE;
       color: #FFFFFF;
-      padding: 2vh 0;
+      padding: 2vh 10vw;
+
+      .scheduler-nav--prev {
+        margin-right: auto;
+      }
+
+      .scheduler-nav--next {
+        margin-left: auto;
+      }
+
+      .scheduler-indicator {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
 
       .scheduler-month-year {
         font-size: 0.5em;
@@ -53,6 +68,12 @@
           display: none;
         }
       }
+    }
+
+    .months-transition {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .scheduler-month-wrapper {
@@ -93,13 +114,13 @@
         &.selected {
           background: #B3B3B3;
           color: whitesmoke;
-          border-radius: 10px;
+          border-radius: 5px;
           transition: color 300ms linear, background 150ms linear;
         }
 
         &.today {
           border: 2px solid #CCCCCC;
-          border-radius: 10px;
+          border-radius: 5px;
         }
       }
     }
@@ -185,11 +206,12 @@
   .hymn-month-to-dos {
     display: flex;
     box-shadow: 3px 3px 3px #00000020;
-    margin: 0 5vw;
-    border-radius: 10px;
+    margin: 20px 5vw 0;
+    border-radius: 20px;
     height: 2em;
     align-items: center;
     padding-left: 10px;
+    border: 1px solid #00000020;
 
     .to-do-date {
       margin-left: auto;

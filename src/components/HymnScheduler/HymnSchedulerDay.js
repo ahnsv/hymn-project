@@ -1,8 +1,9 @@
 import React from "react";
 import { getDate, getMonth, getDay } from "date-fns";
 import "./styles/HymnSchedulerDay.scss";
+import HymnSchedulerDayNotifiers from "./HymnSchedulerDayNotifiers";
 
-const notifiersColorScheme = {
+export const notifiersColorScheme = {
   $goalsColor: "#F5D908",
   $militaryColor: "#00A3EE",
   $breaksColor: "#D80351",
@@ -10,6 +11,8 @@ const notifiersColorScheme = {
 };
 
 const HymnSchedulerDay = ({ index, today, date, id, idx, handleClick, handleHover, isCurrent, isPrev, isNext }) => {
+  // TODO: pull schedule data from indexedDB
+  const dailyScheduleData = {};
   return (
     <div
       className={`${isCurrent ? "current-mth-days" : isNext ? "next-mth-days" : "prev-mth-days"} 
@@ -23,17 +26,15 @@ const HymnSchedulerDay = ({ index, today, date, id, idx, handleClick, handleHove
       onMouseEnter={handleHover}
     >
       <div className={`day-schedule-notifiers`}>
-        <svg height="6" width="6">
-          <circle cx={`2`} cy={`3`} r="2" strokeWidth="1" fill={notifiersColorScheme.$goalsColor}/>
-        </svg>
-        <svg height="6" width="6">
-          <circle cx={`3`} cy={`3`} r="2" strokeWidth="1" fill={notifiersColorScheme.$anniversariesColor}/>
-        </svg>
-        <svg height="6" width="6">
-          <circle cx={`4`} cy={`3`} r="2" strokeWidth="1" fill={notifiersColorScheme.$breaksColor}/>
-        </svg>
+        <HymnSchedulerDayNotifiers/>
       </div>
       {getDate(date)}
+      <div className="day-schedule-notifiers-range">
+        <svg height="20" width="100">
+          <line x1="10" y1="3" x2="40" y2="3" stroke={notifiersColorScheme.$breaksColor} strokeWidth={`4`} strokeLinecap={`round`}/>
+          <line x1="10" y1="9" x2="50" y2="9" stroke={notifiersColorScheme.$goalsColor} strokeWidth={`4`} strokeLinecap={`round`}/>
+        </svg>
+      </div>
     </div>);
 };
 
