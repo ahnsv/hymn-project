@@ -1,3 +1,14 @@
 html, body {
   margin: 0;
 }
+
+
+.left, .right {
+  rect {
+    fill: transparent;
+  }
+
+  path {
+    fill: white;
+  }
+}

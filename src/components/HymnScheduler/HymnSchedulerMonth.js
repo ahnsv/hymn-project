@@ -1,22 +1,8 @@
 import React, { useEffect, useState } from "react";
-import {
-  addDays,
-  addMonths,
-  eachDay,
-  endOfMonth,
-  endOfWeek,
-  getDate,
-  startOfMonth,
-  startOfWeek,
-  subDays,
-  subMonths
-} from "date-fns";
-import { Swipeable } from "react-swipeable";
+import { addMonths, getDate, subMonths } from "date-fns";
 import "./styles/HymnScheduler.scss";
 import "./styles/HymnSchedulerInput.scss";
-import HymnSchedulerDay from "./HymnSchedulerDay";
 import HymnSchedulerMonthNav from "./HymnSchedulerMonthNav";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
 import HymnSchedulerCalendar from "./HymnSchedulerCalendar";
 
 

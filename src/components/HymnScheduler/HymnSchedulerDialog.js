@@ -1,8 +1,8 @@
-import React, {useState} from 'react'
+import React, { useState } from "react";
 import HymnHeader from "../HymnHeader/HymnHeader";
 import "./styles/HymnSchedulerDialog.scss";
-import {format} from 'date-fns'
-import HymnSchedulerCalendar from "./HymnSchedulerCalendar";
+import { format } from "date-fns";
+import { ReactComponent as Left } from "../../assets/icons/left.svg";
 
 function HymnSchedulerDialog({title, background, start, index, dialogProp}) {
   const [select, setSelect] = useState(null);
@@ -10,7 +10,7 @@ function HymnSchedulerDialog({title, background, start, index, dialogProp}) {
   const [currentTab, setCurrentTab] = useState(null);
   return (
     <div className={`hymn-scheduler-dialog`}>
-      <HymnHeader title={title} background={background} right={``} left={`<`} leftProp={dialogProp}/>
+      <HymnHeader title={title} background={background} right={``} left={<Left className={`left`} width={`12`}/>} leftProp={dialogProp}/>
       <div className="dialog-content">
         <div className={`wrapper`}>
         <div className="form--title">
@@ -40,7 +40,7 @@ function HymnSchedulerDialog({title, background, start, index, dialogProp}) {
               {format(start, "YYYY.MM.DD")}
             </div>
           </div>
-          <div className="input--end">
+          <div className="input--end active">
             <div className="end--title">
               종료일
             </div>

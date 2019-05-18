@@ -20,12 +20,12 @@
     justify-content: space-around;
 
     .input--start {
-      padding: 0 0 0 5vw;
-      margin-right: -5vw;
+      padding: 0 1vw 0 3vw;
+      margin-right: -3vw;
     }
 
     .input--end {
-      padding: 0 5vw 0 5vw;
+      padding: 0 3vw 0 3vw;
       clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
     }
 
@@ -36,13 +36,15 @@
       font-weight: bold;
       flex: 1;
       height: 8vh;
+      align-items: center;
+      justify-content: center;
 
       & > * {
         align-self: center;
       }
 
       .start--content, .end--content {
-        padding: 0 0 0 10px;
+        padding: 0 0 0 1vw;
         color: #00A3EE;
       }
 

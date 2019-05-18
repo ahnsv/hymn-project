@@ -101,6 +101,11 @@
     background: #00A3EE;
     color: white;
     font-size: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 3px 3px 3px #00000020;
   }
 
   .hymn-month-to-dos {
@@ -108,9 +113,9 @@
     box-shadow: 3px 3px 3px #00000020;
     margin: 20px 5vw 0;
     border-radius: 20px;
-    height: 2em;
+    height: 3em;
     align-items: center;
-    padding-left: 10px;
+    padding-left: 20px;
     border: 1px solid #00000020;
 
     .to-do-date {
@@ -123,6 +128,7 @@
     }
   }
 }
+
 .scheduler-month-nav {
   display: flex;
   flex-direction: row;
@@ -223,3 +229,5 @@
     }
   }
 }
+
+

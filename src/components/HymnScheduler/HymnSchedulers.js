@@ -62,7 +62,7 @@ const HymnSchedulerWithDialog = () => {
         today={today}
         isDialog={dialog}
       />
-      <button className={`add-schedule`} onClick={() => setDialog((dialog) => !dialog)} style={{zIndex: '1'}}>+</button>
+      <div className={`add-schedule`} onClick={() => setDialog((dialog) => !dialog)} style={{zIndex: '1'}}>+</div>
       {
         dialog && <HymnSchedulerDialog title={`일정 추가`} background={`#00A3EE`} start={today} index={today} dialogProp={() => setDialog(false)}/>
       }

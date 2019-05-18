@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="26" height="48" viewBox="0 0 26 48">
+  <defs>
+    <clipPath id="clip-대지_46">
+      <rect width="26" height="48"/>
+    </clipPath>
+  </defs>
+  <g id="대지_46" data-name="대지 46" clip-path="url(#clip-대지_46)">
+    <rect width="26" height="48" fill="#fff"/>
+    <path id="패스_34" data-name="패스 34" d="M145.857,385.476a3.053,3.053,0,0,1,0-4.242l18.407-18.879-18.407-18.879a3.053,3.053,0,0,1,0-4.242,2.872,2.872,0,0,1,4.136,0l20.15,20.666a3.033,3.033,0,0,1,.857,2.122,1.809,1.809,0,0,0,0,.667,3.032,3.032,0,0,1-.857,2.121l-20.15,20.666A2.872,2.872,0,0,1,145.857,385.476Z" transform="translate(-145 -338.355)"/>
+  </g>
+</svg>
