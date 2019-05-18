@@ -1,5 +1,5 @@
 {
-  "main.css": "/hymn-project/static/css/main.a65388b0.chunk.css",
+  "main.css": "/hymn-project/static/css/main.20c941fd.chunk.css",
   "main.js": "/hymn-project/static/js/main.175251c5.chunk.js",
   "main.js.map": "/hymn-project/static/js/main.175251c5.chunk.js.map",
   "runtime~main.js": "/hymn-project/static/js/runtime~main.e0274173.js",
@@ -7,9 +7,9 @@
   "static/js/2.8663c674.chunk.js": "/hymn-project/static/js/2.8663c674.chunk.js",
   "static/js/2.8663c674.chunk.js.map": "/hymn-project/static/js/2.8663c674.chunk.js.map",
   "index.html": "/hymn-project/index.html",
-  "precache-manifest.0c08824a68fe4f483c21c4f9c93f921f.js": "/hymn-project/precache-manifest.0c08824a68fe4f483c21c4f9c93f921f.js",
+  "precache-manifest.e4f6f4aad0899e43d0fd18154f55dc56.js": "/hymn-project/precache-manifest.e4f6f4aad0899e43d0fd18154f55dc56.js",
   "service-worker.js": "/hymn-project/service-worker.js",
-  "static/css/main.a65388b0.chunk.css.map": "/hymn-project/static/css/main.a65388b0.chunk.css.map",
+  "static/css/main.20c941fd.chunk.css.map": "/hymn-project/static/css/main.20c941fd.chunk.css.map",
   "static/media/calendar.svg": "/hymn-project/static/media/calendar.17fe5d4d.svg",
   "static/media/gauge.svg": "/hymn-project/static/media/gauge.ec97192c.svg",
   "static/media/hamburger.svg": "/hymn-project/static/media/hamburger.d2029f73.svg",
