@@ -1,0 +1,116 @@
+.hymn-scheduler-dialog {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  animation: fadeIn 200ms ease-in forwards;
+  z-index: 0;
+
+  .dialog-content {
+    height: 100%;
+    background: white;
+    & > div.wrapper {
+      box-shadow: 0 5px 5px #00000010;
+    }
+  }
+
+  .date-picker--input {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    .input--start {
+      padding: 0 0 0 5vw;
+      margin-right: -5vw;
+    }
+
+    .input--end {
+      padding: 0 5vw 0 5vw;
+      clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
+    }
+
+    .input--start, .input--end {
+      display: flex;
+      flex-direction: row;
+      font-size: 1.1em;
+      font-weight: bold;
+      flex: 1;
+      height: 8vh;
+
+      & > * {
+        align-self: center;
+      }
+
+      .start--content, .end--content {
+        padding: 0 0 0 10px;
+        color: #00A3EE;
+      }
+
+      .start--content {
+        //-webkit-clip-path: polygon(0 0, 100% 0, 92% 100%, 0% 100%);
+        //clip-path: polygon(0 0, 100% 0, 92% 100%, 0% 100%);
+      }
+
+      .end--content {
+        //-webkit-clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
+        //clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
+      }
+
+      &.active {
+        background: #f5d908;
+
+        .end--content {
+          color: white;
+          font-weight: bolder;
+        }
+      }
+    }
+  }
+
+  .dialog-content {
+    .form--title {
+      height: 80px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      margin: 0 10vw;
+      border-bottom: 1px solid #00000015;
+
+      input.title {
+        border: none;
+        height: 40px;
+        font-size: 2em;
+        outline: none;
+        color: #666666;
+        max-width: 250px;
+      }
+    }
+    .form--content {
+      .form--content__category {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1vh 0;
+
+        .form--content__category--tab {
+          width: 75px;
+          height: 8vh;
+          font-size: 1.3em;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          opacity: 0.5;
+
+          &.active {
+            font-weight: bolder;
+            color: #D80351;
+            text-decoration-color: #D80351;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}

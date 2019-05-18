@@ -4,6 +4,7 @@ import "./styles/HymnScheduler.scss";
 import "./styles/HymnSchedulerInput.scss";
 import HymnSchedulerWeek from "./HymnSchedulerWeek";
 import HymnSchedulerMonth from "./HymnSchedulerMonth";
+import HymnSchedulerDialog from "./HymnSchedulerDialog";
 /*
 * Hymn Scheduler Routes w/ components
 * */
@@ -52,14 +53,19 @@ const HymnSchedulerWithWeekly = () => {
   );
 };
 
-const HymnSchedulerWithDialog = (props) => {
+const HymnSchedulerWithDialog = () => {
   const today = new Date();
+  const [dialog, setDialog] = useState(false);
   return (
     <div className="hymn-scheduler">
       <HymnSchedulerMonth
         today={today}
+        isDialog={dialog}
       />
-      <button className={`add-schedule`}>+</button>
+      <button className={`add-schedule`} onClick={() => setDialog((dialog) => !dialog)} style={{zIndex: '1'}}>+</button>
+      {
+        dialog && <HymnSchedulerDialog title={`일정 추가`} background={`#00A3EE`} start={today} index={today} dialogProp={() => setDialog(false)}/>
+      }
     </div>
   );
 };
