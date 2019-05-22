@@ -1,5 +1,5 @@
 import React from "react";
-import { getDate, getMonth, getDay } from "date-fns";
+import { getDate, getMonth, getDay, isSameDay } from "date-fns";
 import "./styles/HymnSchedulerDay.scss";
 import HymnSchedulerDayNotifiers from "./HymnSchedulerDayNotifiers";
 
@@ -10,7 +10,7 @@ export const notifiersColorScheme = {
   $anniversariesColor: "#88A80D"
 };
 
-const HymnSchedulerDay = ({ index, today, date, id, idx, handleClick, handleHover, isCurrent, isPrev, isNext }) => {
+const HymnSchedulerDay = ({ index, today, date, id, idx, handleClick, handleHover, isCurrent, isPrev, isNext, start, end }) => {
   // TODO: pull schedule data from indexedDB
   const dailyScheduleData = {};
   return (
@@ -18,7 +18,7 @@ const HymnSchedulerDay = ({ index, today, date, id, idx, handleClick, handleHove
       className={`${isCurrent ? "current-mth-days" : isNext ? "next-mth-days" : "prev-mth-days"} 
       ${(index === today) ? (idx === getDate(today) - 1)
         ? "today" : "" : (idx === getDate(today) - 1 && getMonth(date) === getMonth(today))
-        ? "today" : ""} scheduler-day`}
+        ? "today" : ""} scheduler-day ${ isSameDay(start,date) ? 'selected' : ''} ${isSameDay(end, date) ? 'selected' : ''}`}
       id={id}
       key={idx}
       style={{ "color": `${getDay(date) === 0 ? "#D80351" : getDay(date) === 6 ? "#00A3EE" : ""}` }}

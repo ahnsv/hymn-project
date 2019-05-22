@@ -18,13 +18,13 @@ import HymnSchedulerDay from "./HymnSchedulerDay";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import "./styles/HymnSchedulerCalendar.scss";
 
-function HymnSchedulerCalendar({ today, index, handleNext, handlePrev, handleClick, mode }) {
+function HymnSchedulerCalendar({ today, index, handleNext, handlePrev, handleClick, mode, number, start, end }) {
   const startDate = startOfMonth(index);
   const endDate = endOfMonth(index);
   const prevMonthIdx = subDays(startDate, 1);
   const nextMonthIdx = addDays(endDate, 1);
   const daysInMonth = eachDay(startDate, endDate).map((d, idx) => (
-    <HymnSchedulerDay today={today} index={index} idx={idx} key={idx} id={`day-${idx + 1}`} date={d} isCurrent={true}
+    <HymnSchedulerDay today={today} index={index} idx={idx} key={idx} id={`day-${idx + 1}`} start={start ? start : null} end={end ? end : null} date={d} isCurrent={true}
                       handleClick={handleClick}/>
   ));
   const prevMthDays = eachDay(startOfWeek(prevMonthIdx), prevMonthIdx).map((d, idx) => (
@@ -38,7 +38,7 @@ function HymnSchedulerCalendar({ today, index, handleNext, handlePrev, handleCli
   return (
     <>
       {
-        mode === "mini" && <div className={`month-index`}>{getYear(index) + "." + getMonth(index)}</div>
+        mode === "mini" && <div className={`month-index`}>{getYear(index) + "." + (getMonth(index) + 1)}</div>
       }
       <TransitionGroup className={`months-transition`}>
         <CSSTransition timeout={500} key={index} classNames={`months`} unmountOnExit={true} mountOnEnter={true}>

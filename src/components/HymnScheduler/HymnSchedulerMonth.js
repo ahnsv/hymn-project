@@ -44,6 +44,7 @@ const HymnSchedulerMonth = ({ today, indexDate, isShortVersion, setSelectProp, i
   const handleNext = () => {
     setIndex(index => addMonths(index, 1));
   };
+  // TODO: fix awkward transition
   return (
     <div className="hymn-scheduler-month" style={{ zIndex: isDialog ? "-1" : "inherit" }}>
       <HymnSchedulerMonthNav index={index} handleNext={handleNext} handlePrev={handlePrev}

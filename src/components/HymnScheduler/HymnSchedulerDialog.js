@@ -3,6 +3,8 @@ import HymnHeader from "../HymnHeader/HymnHeader";
 import "./styles/HymnSchedulerDialog.scss";
 import { format } from "date-fns";
 import { ReactComponent as Left } from "../../assets/icons/left.svg";
+import HymnSchedulerCalendar from "./HymnSchedulerCalendar";
+import {addMonths} from 'date-fns'
 
 function HymnSchedulerDialog({title, background, start, index, dialogProp}) {
   const [select, setSelect] = useState(null);
@@ -13,20 +15,20 @@ function HymnSchedulerDialog({title, background, start, index, dialogProp}) {
       <HymnHeader title={title} background={background} right={``} left={<Left className={`left`} width={`12`}/>} leftProp={dialogProp}/>
       <div className="dialog-content">
         <div className={`wrapper`}>
-        <div className="form--title">
-          <input type="text" className="title" placeholder={`일정 제목`}/>
-          <div className="toggle-star" style={{width: '50px'}}>
+        {/*<div className="form--title">*/}
+        {/*  <input type="text" className="title" placeholder={`일정 제목`}/>*/}
+        {/*  <div className="toggle-star" style={{width: '50px'}}>*/}
 
-          </div>
-        </div>
-        <div className="form--content">
-          <div className="form--content__category">
-            <div className="form--content__category--tab goal">목표</div>
-            <div className="form--content__category--tab military">병영</div>
-            <div className="form--content__category--tab break">휴가</div>
-            <div className="form--content__category--tab anniversary">기념일</div>
-          </div>
-        </div>
+        {/*  </div>*/}
+        {/*</div>*/}
+        {/*<div className="form--content">*/}
+        {/*  <div className="form--content__category">*/}
+        {/*    <div className="form--content__category--tab goal">목표</div>*/}
+        {/*    <div className="form--content__category--tab military">병영</div>*/}
+        {/*    <div className="form--content__category--tab break">휴가</div>*/}
+        {/*    <div className="form--content__category--tab anniversary">기념일</div>*/}
+        {/*  </div>*/}
+        {/*</div>*/}
           <div className="form--content__details">
 
           </div>
@@ -49,9 +51,10 @@ function HymnSchedulerDialog({title, background, start, index, dialogProp}) {
             </div>
           </div>
         </div>
-        {/*<div className="date-picker--calendar">*/}
-        {/*    <HymnSchedulerCalendar mode={`mini`} index={index}/>*/}
-        {/*</div>*/}
+        <div className="date-picker--calendar">
+            <HymnSchedulerCalendar mode={`mini`} index={index} start={start}/>
+            <HymnSchedulerCalendar mode={`mini`} index={addMonths(index, 1)}/>
+        </div>
       </div>
     </div>
   )

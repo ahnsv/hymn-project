@@ -111,7 +111,7 @@
   .hymn-month-to-dos {
     display: flex;
     box-shadow: 3px 3px 3px #00000020;
-    margin: 20px 5vw 0;
+    margin: 10px 5vw 0;
     border-radius: 20px;
     height: 3em;
     align-items: center;
@@ -217,7 +217,7 @@
     color: #666666;
 
     &.selected {
-      background: #B3B3B3;
+      background: #F5D908;
       color: whitesmoke;
       border-radius: 5px;
       transition: color 300ms linear, background 150ms linear;
