@@ -218,10 +218,14 @@
 
     &.selected {
       background: #F5D908;
+      border-radius: 0;
       color: whitesmoke;
-      border-radius: 5px;
       transition: color 300ms linear, background 150ms linear;
+      &.range {
+        background-color: rgba(245, 217, 8, 0.50);
+      }
     }
+
 
     &.today {
       border: 2px solid #CCCCCC;
