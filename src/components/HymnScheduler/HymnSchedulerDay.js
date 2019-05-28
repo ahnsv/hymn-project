@@ -2,6 +2,7 @@ import React from "react";
 import { getDate, getDay, getMonth, isSameDay } from "date-fns";
 import "./styles/HymnSchedulerDay.scss";
 import HymnSchedulerDayNotifiers from "./HymnSchedulerDayNotifiers";
+import HymnSchedulerDayNotifiersRange from "./HymnSchedulerDayNotifiersRange";
 
 export const notifiersColorScheme = {
   $goalsColor: "#F5D908",
@@ -10,6 +11,42 @@ export const notifiersColorScheme = {
   $anniversariesColor: "#88A80D"
 };
 
+export const test_data = [{
+  date: new Date(2019, 4, 11),
+  title: "안녕",
+  important: true,
+  category: "military"
+}, {
+  date: [new Date(2019, 5, 4), new Date(2019, 5, 7)],
+  title: "휴가",
+  category: "break",
+  important: true
+}, {
+  date: [new Date(2019, 4, 3), new Date(2019, 4, 7)],
+  title: "테스트",
+  category: "goals",
+  important: false
+}
+];
+/**
+ *
+ * @param index
+ * @param today
+ * @param date
+ * @param id
+ * @param idx
+ * @param handleClick
+ * @param handleHover
+ * @param isCurrent
+ * @param isPrev
+ * @param isNext
+ * @param start
+ * @param end
+ * @param handleSelect
+ * @param {ReactDOM} notifiers
+ * @returns {*}
+ * @constructor
+ */
 const HymnSchedulerDay = ({ index, today, date, id, idx, handleClick, handleHover, isCurrent, isPrev, isNext, start, end, handleSelect }) => {
   // TODO: pull schedule data from indexedDB
   function handleDayClick(e, date) {
@@ -43,18 +80,9 @@ const HymnSchedulerDay = ({ index, today, date, id, idx, handleClick, handleHove
       onClick={(e) => handleDayClick(e, date)}
       onMouseEnter={handleHover}
     >
-      <div className={`day-schedule-notifiers`}>
-        <HymnSchedulerDayNotifiers/>
-      </div>
+      <HymnSchedulerDayNotifiers stored_data={test_data} date={date}/>
       {getDate(date)}
-      <div className="day-schedule-notifiers-range">
-        <svg height="20" width="100">
-          <line x1="10" y1="3" x2="40" y2="3" stroke={notifiersColorScheme.$breaksColor} strokeWidth={`4`}
-                strokeLinecap={`round`}/>
-          <line x1="10" y1="9" x2="50" y2="9" stroke={notifiersColorScheme.$goalsColor} strokeWidth={`4`}
-                strokeLinecap={`round`}/>
-        </svg>
-      </div>
+      <HymnSchedulerDayNotifiersRange stored_data={test_data} date={date}/>
     </div>);
 };
 
