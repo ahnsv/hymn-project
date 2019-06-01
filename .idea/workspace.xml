@@ -7,12 +7,16 @@
     <bookmark url="file://$PROJECT_DIR$/src/components/HymnLayout/styles/HymnLayoutCard.scss" line="0" mnemonic="4" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c26bd276-fcdc-4344-9053-98646a1c705f" name="hymn-project" comment="feat: scheduler add css and js bindings">
+    <list default="true" id="c26bd276-fcdc-4344-9053-98646a1c705f" name="hymn-project" comment="feat: notifier range edit">
+      <change afterPath="$PROJECT_DIR$/src/db.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/db.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerDay.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerDay.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerDayNotifiers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerDayNotifiers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerDayNotifiersRange.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerDayNotifiersRange.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HymnScheduler/styles/HymnSchedulerDay.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HymnScheduler/styles/HymnSchedulerDay.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerDialog.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HymnScheduler/styles/HymnSchedulerDialog.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HymnScheduler/styles/HymnSchedulerDialog.scss" afterDir="false" />
     </list>
     <list id="5e044b9d-6f3c-4925-b931-6377b0522fb6" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -30,10 +34,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerCalendar.js">
+        <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerDayNotifiersRange.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+            <state relative-caret-position="177">
+              <caret line="38" selection-start-line="38" selection-end-line="38" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -42,31 +46,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/tests/HymnSchedulerDayNotifiers.spec.js">
+        <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerDialog.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerDailyTodo.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulers.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="63" column="7" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="7" />
+            <state relative-caret-position="1000">
+              <caret line="92" column="27" lean-forward="true" selection-start-line="92" selection-start-column="27" selection-end-line="92" selection-end-column="27" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
@@ -75,19 +58,49 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerDay.js">
+        <entry file="file://$PROJECT_DIR$/src/styles/shared/_animations.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-798">
-              <caret line="46" column="4" lean-forward="true" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
+            <state relative-caret-position="1023">
+              <caret line="33" selection-start-line="33" selection-end-line="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulers.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="217">
+              <caret line="71" column="2" lean-forward="true" selection-start-line="71" selection-start-column="2" selection-end-line="71" selection-end-column="2" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#0#51#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/styles/HymnSchedulerDay.scss">
+        <entry file="file://$PROJECT_DIR$/src/App.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-48">
+              <caret line="64" column="35" selection-start-line="64" selection-start-column="35" selection-end-line="64" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#59#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/db.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="217">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/db.test.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="155">
               <caret line="5" selection-start-line="5" selection-end-line="5" />
@@ -96,34 +109,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerDayNotifiers.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerDayNotifiersRange.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="40" selection-start-line="40" selection-end-line="40" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/styles/HymnSchedulerDialog.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
+            <state relative-caret-position="279">
+              <caret line="125" column="25" lean-forward="true" selection-start-line="125" selection-start-column="25" selection-end-line="125" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -131,10 +120,21 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerMonth.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
+            <state relative-caret-position="851">
               <caret line="51" column="52" selection-start-line="51" selection-start-column="52" selection-end-line="51" selection-end-column="52" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/App.test.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -196,17 +196,19 @@
         <option value="$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerMonthNav.js" />
         <option value="$PROJECT_DIR$/src/components/HymnHeader/HymnHeader.js" />
         <option value="$PROJECT_DIR$/src/styles/shared/_reset.scss" />
-        <option value="$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulers.js" />
         <option value="$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerMonth.js" />
         <option value="$PROJECT_DIR$/src/styles/shared/_animations.scss" />
         <option value="$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerCalendar.js" />
         <option value="$PROJECT_DIR$/src/components/HymnScheduler/styles/HymnScheduler.scss" />
-        <option value="$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerDialog.js" />
-        <option value="$PROJECT_DIR$/src/components/HymnScheduler/styles/HymnSchedulerDialog.scss" />
         <option value="$PROJECT_DIR$/src/components/HymnScheduler/styles/HymnSchedulerDay.scss" />
         <option value="$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerDayNotifiers.js" />
         <option value="$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerDay.js" />
         <option value="$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerDayNotifiersRange.js" />
+        <option value="$PROJECT_DIR$/src/db.js" />
+        <option value="$PROJECT_DIR$/src/db.test.js" />
+        <option value="$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerDialog.js" />
+        <option value="$PROJECT_DIR$/src/components/HymnScheduler/styles/HymnSchedulerDialog.scss" />
+        <option value="$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulers.js" />
       </list>
     </option>
   </component>
@@ -222,6 +224,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -233,12 +236,6 @@
               <item name="hymn-project" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="E:\workspace\hymn-project" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="hymn-project" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="E:\workspace\hymn-project" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="assets" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="hymn-project" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
@@ -261,11 +258,23 @@
               <item name="HymnScheduler" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="styles" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
+            <path>
+              <item name="hymn-project" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="E:\workspace\hymn-project" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="styles" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="hymn-project" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="E:\workspace\hymn-project" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="styles" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="shared" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -280,6 +289,7 @@
     <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.standard" value="" />
+    <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/react-scripts" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="E:\workspace\hymn-project\node_modules\prettier" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -307,15 +317,31 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.start">
-    <configuration name="deploy-storybook" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="deploy-storybook" />
-      </scripts>
+  <component name="RunManager" selected="Jest.db table check">
+    <configuration name="db table check" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
       <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/db.test.js" />
+      <test-names>
+        <test-name value="db table check" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="renders without crashing" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/App.test.js" />
+      <test-names>
+        <test-name value="renders without crashing" />
+      </test-names>
       <method v="2" />
     </configuration>
     <configuration name="deploy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -350,10 +376,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Jest.db table check" />
+        <item itemvalue="Jest.renders without crashing" />
         <item itemvalue="npm.start" />
         <item itemvalue="npm.deploy" />
-        <item itemvalue="npm.storybook" />
-        <item itemvalue="npm.deploy-storybook" />
         <item itemvalue="npm.storybook" />
       </list>
     </recent_temporary>
@@ -417,7 +443,10 @@
       <workItem from="1558494212260" duration="2122000" />
       <workItem from="1558515215595" duration="3949000" />
       <workItem from="1558860398941" duration="6284000" />
-      <workItem from="1559038697607" duration="6121000" />
+      <workItem from="1559038697607" duration="6178000" />
+      <workItem from="1559113474092" duration="173000" />
+      <workItem from="1559113721371" duration="87000" />
+      <workItem from="1559388228852" duration="4588000" />
     </task>
     <task id="LOCAL-00005" summary="package json update">
       <created>1556020003242</created>
@@ -601,11 +630,26 @@
       <option name="project" value="LOCAL" />
       <updated>1558866860293</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="feat: notifier range edit">
+      <created>1559045510611</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1559045510611</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="renders_without_crashing - 2019.06.01 at 20h 46m 26s.xml">
+      <configuration name="renders without crashing" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="db_table_check - 2019.06.01 at 20h 46m 45s.xml">
+      <configuration name="db table check" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="167330000" />
+    <option name="totallyTimeSpent" value="172235000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -688,7 +732,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="vscode config removed" />
     <MESSAGE value="package lock json update" />
     <MESSAGE value="environmental variables related update" />
     <MESSAGE value="token update" />
@@ -713,7 +756,8 @@
     <MESSAGE value="feat: css issue with deploy resolve, icon add" />
     <MESSAGE value="feat: scheduler dialog calendar" />
     <MESSAGE value="feat: scheduler add css and js bindings" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: scheduler add css and js bindings" />
+    <MESSAGE value="feat: notifier range edit" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: notifier range edit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -725,18 +769,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/styles/MonthsDialog.scss" />
-    <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/styles/YearsDialog.scss" />
-    <entry file="file://$PROJECT_DIR$/src/components/HymnLayout/styles/HymnLayoutCard.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/HymnLayout/styles/HymnLayoutRow.scss">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/assets/icons/star.svg">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -812,13 +844,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="31">
-          <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/HymnLayout/HymnLayout.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
@@ -859,13 +884,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="279">
           <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
@@ -917,16 +935,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1860">
-          <caret line="69" column="28" selection-start-line="69" selection-start-column="28" selection-end-line="69" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="642">
@@ -961,27 +969,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/styles/shared/_animations.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1023">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/styles/HymnSchedulerCalendar.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="31">
           <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerDialog.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2356">
-          <caret line="82" column="16" lean-forward="true" selection-start-line="82" selection-start-column="16" selection-end-line="82" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1009,10 +1000,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/styles/HymnSchedulerDialog.scss">
+    <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerCalendar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
+        <state relative-caret-position="310">
+          <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/tests/HymnSchedulerDayNotifiers.spec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="744">
+          <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1023,40 +1027,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerCalendar.js">
+    <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerDay.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerMonth.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="51" column="52" selection-start-line="51" selection-start-column="52" selection-end-line="51" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="63" column="7" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/tests/HymnSchedulerDayNotifiers.spec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+        <state relative-caret-position="1302">
+          <caret line="46" column="4" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -1072,7 +1046,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerDayNotifiers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
+        <state relative-caret-position="310">
           <caret line="12" selection-start-line="12" selection-end-line="12" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
@@ -1080,22 +1054,112 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerDay.js">
+    <entry file="file://$PROJECT_DIR$/src/serviceWorker.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-798">
-          <caret line="46" column="4" lean-forward="true" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
+        <state relative-caret-position="-3867">
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="31">
+          <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-48">
+          <caret line="64" column="35" selection-start-line="64" selection-start-column="35" selection-end-line="64" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerDayNotifiersRange.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        <state relative-caret-position="177">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/db.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/db.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/styles/shared/_animations.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1023">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/styles/HymnSchedulerDialog.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="125" column="25" lean-forward="true" selection-start-line="125" selection-start-column="25" selection-end-line="125" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerDialog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1000">
+          <caret line="92" column="27" lean-forward="true" selection-start-line="92" selection-start-column="27" selection-end-line="92" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulerMonth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="851">
+          <caret line="51" column="52" selection-start-line="51" selection-start-column="52" selection-end-line="51" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/HymnScheduler/HymnSchedulers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="71" column="2" lean-forward="true" selection-start-line="71" selection-start-column="2" selection-end-line="71" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
           </folding>
         </state>
       </provider>

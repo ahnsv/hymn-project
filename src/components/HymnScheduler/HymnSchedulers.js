@@ -5,6 +5,7 @@ import "./styles/HymnSchedulerInput.scss";
 import HymnSchedulerWeek from "./HymnSchedulerWeek";
 import HymnSchedulerMonth from "./HymnSchedulerMonth";
 import HymnSchedulerDialog from "./HymnSchedulerDialog";
+import {Transition} from 'react-transition-group'
 /*
 * Hymn Scheduler Routes w/ components
 * */
@@ -62,10 +63,10 @@ const HymnSchedulerWithDialog = () => {
         today={today}
         isDialog={dialog}
       />
-      <div className={`add-schedule`} onClick={() => setDialog((dialog) => !dialog)} style={{zIndex: '1'}}>+</div>
-      {
-        dialog && <HymnSchedulerDialog title={`일정 추가`} background={`#00A3EE`} start={today} index={today} dialogProp={() => setDialog(false)}/>
-      }
+      <div className={`add-schedule`} onClick={() => setDialog((dialog) => !dialog)}>+</div>
+      <Transition in={dialog} timeout={500} appear={true}>
+        <HymnSchedulerDialog title={`일정 추가`} background={`#00A3EE`} start={today} index={today} dialogProp={() => setDialog(false)}/>
+      </Transition>
     </div>
   );
 };

@@ -9,6 +9,7 @@
   .dialog-content {
     height: 100%;
     background: white;
+
     & > div.wrapper {
       box-shadow: 0 5px 5px #00000010;
     }
@@ -88,7 +89,9 @@
         max-width: 250px;
       }
     }
+
     .form--content {
+      box-shadow: 0 5px 5px #00000010;
       .form--content__category {
         display: flex;
         align-items: center;
@@ -111,6 +114,33 @@
             text-decoration-color: #D80351;
             text-decoration: underline;
           }
+        }
+      }
+    }
+
+    .form--content__details {
+      display: grid;
+      grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+      padding: 10px;
+      background-color: #F7F7F7;
+      box-shadow: inset 0 4px 3px #00000010;
+      .form--content__detail {
+        height: 50px;
+        border-radius: 10px;
+        background-color: #FFCE00;
+        color: white;
+        font-weight: bolder;
+        margin: 5px;
+        padding: 0 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        box-shadow: 0 3px 4px #00000010;
+
+        &.active {
+          background-color: #EDAB06;
+          transition: all 500ms linear;
         }
       }
     }

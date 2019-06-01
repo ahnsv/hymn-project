@@ -36,10 +36,6 @@ export function HymnSchedulerDayNotifiersRange({ stored_data, date }) {
   return (
     <div className={`day-schedule-notifiers-range`}>
       <svg width={`50`} widths={`50`}>
-        {
-          stored_data && stored_data.filter(s => s.date instanceof Array && isWithinRange(date, s.date[0], s.date[1])).map((d, idx) =>
-          )
-        }
       </svg>
     </div>
   );
