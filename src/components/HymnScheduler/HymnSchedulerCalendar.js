@@ -21,7 +21,8 @@ function HymnSchedulerCalendar({ today, index, handleNext, handlePrev, handleCli
   const prevMonthIdx = subDays(startDate, 1);
   const nextMonthIdx = addDays(endDate, 1);
   const daysInMonth = eachDay(startDate, endDate).map((d, idx) => (
-    <HymnSchedulerDay today={today} index={index} idx={idx} key={idx} id={`day-${idx + 1}`} start={start ? start : null} end={end ? end : null} date={d} isCurrent={true}
+    <HymnSchedulerDay today={today} index={index} idx={idx} key={idx} id={`day-${idx + 1}`} start={start ? start : null}
+                      end={end ? end : null} date={d} isCurrent={true}
                       handleClick={handleClick} handleSelect={setSelect}/>
   ));
   const prevMthDays = eachDay(startOfWeek(prevMonthIdx), prevMonthIdx).map((d, idx) => (
@@ -37,24 +38,22 @@ function HymnSchedulerCalendar({ today, index, handleNext, handlePrev, handleCli
       {
         mode === "mini" && <div className={`month-index`}>{getYear(index) + "." + (getMonth(index) + 1)}</div>
       }
-      <TransitionGroup className={`months-transition`}>
-        <CSSTransition timeout={500} key={index} classNames={`months`} unmountOnExit={true} mountOnEnter={true} in={true}>
-          <Swipeable onSwipedRight={handlePrev} onSwipedLeft={handleNext} className={`scheduler-month-wrapper`}>
-            {
-              ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"].map((d, idx) => (
-                <div key={idx}
-                     className={`day-indexes`}
-                     style={{ "color": `${idx === 0 ? "#D80351" : idx === 6 ? "#00A3EE" : "inherit"}` }}>
-                  <div>{d}</div>
-                </div>
-              ))
-            }
-            {prevMthDays}
-            {daysInMonth}
-            {nextMthDays}
-          </Swipeable>
-        </CSSTransition>
-      </TransitionGroup>
+      <CSSTransition timeout={500} key={index} classNames={`months`} unmountOnExit={true} mountOnEnter={true} in={true}>
+        <Swipeable onSwipedRight={handlePrev} onSwipedLeft={handleNext} className={`scheduler-month-wrapper`}>
+          {
+            ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"].map((d, idx) => (
+              <div key={idx}
+                   className={`day-indexes`}
+                   style={{ "color": `${idx === 0 ? "#D80351" : idx === 6 ? "#00A3EE" : "inherit"}` }}>
+                <div>{d}</div>
+              </div>
+            ))
+          }
+          {prevMthDays}
+          {daysInMonth}
+          {nextMthDays}
+        </Swipeable>
+      </CSSTransition>
     </>
   );
 }
