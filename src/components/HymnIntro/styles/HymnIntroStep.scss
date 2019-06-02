@@ -1,0 +1,62 @@
+.hymn-intro-step {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #00A3EE;
+  color: white;
+  align-items: center;
+  justify-content: center;
+
+  .hymn-stepper--fixed-wrapper {
+    margin-bottom: auto;
+    display: flex;
+    margin-top: 10px;
+    display: -webkit-flex;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    .hymn-stepper--indicator {
+      display: flex;
+      flex-direction: row;
+      padding: 20px 0 0 20px;
+
+      .hymn-stepper--indicator__step {
+        width: 8px;
+        height: 8px;
+        border-radius: 100%;
+        border: 1px solid white;
+        margin: 0 4px;
+        transition: all 300ms linear;
+        &.active {
+          background-color: white;
+          transition: all 300ms linear;
+        }
+      }
+    }
+
+    .hymn-stepper--logo {
+      height: 225px;
+      width: 225px;
+      background-color: #FFFFFF27;
+      -webkit-border-radius: 100%;
+      -moz-border-radius: 100%;
+      border-radius: 100%;
+    }
+  }
+  .hymn-stepper--content {
+    flex: 1;
+  }
+
+  .hymn-stepper--next, .hymn-stepper--submit {
+    height: 40px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 1px solid white;
+    margin-bottom: 10px;
+
+  }
+}

@@ -8,6 +8,8 @@ import { HymnSchedulerWithDialog } from "./components/HymnScheduler/HymnSchedule
 import gauge from "./assets/icons/gauge.svg";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import {TransitionGroup, CSSTransition} from 'react-transition-group'
+import HymnIntro from "./components/HymnIntro/HymnIntro";
+import HymnIntroStep from "./components/HymnIntro/HymnIntroStep";
 
 const App = (props) => {
   const imgGauge = (<img src={gauge} alt={`gauge`}/>);
@@ -64,6 +66,8 @@ const App = (props) => {
           <TransitionGroup>
             <CSSTransition classNames={`page`} key={location.pathname} timeout={500}>
               <Switch>
+                <Route path={`/intro`} component={HymnIntro} />
+                <Route exact path={`/tutorial`} component={HymnIntroStep} />
                 <Route exact path={`/`} render={() => (<Home linkProp={`/scheduler`}/>)}/>
                 <Route path={`/scheduler`} component={Scheduler}/>
               </Switch>
