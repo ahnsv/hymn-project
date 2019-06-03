@@ -8,7 +8,7 @@ const HymnIntro = withRouter(({history}) => {
       <div className="hymn-intro--logo"></div>
       <div className="hymn-intro--greetings">
         <h1>환영합니다!</h1>
-        <div>
+        <div style={{wordBreak: 'keep-all'}}>
           HYMN과 함께 신바람 나는 병영생활을 즐겨볼까요?
         </div>
       </div>

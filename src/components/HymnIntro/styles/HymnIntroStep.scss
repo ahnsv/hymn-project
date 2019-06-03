@@ -1,11 +1,11 @@
 .hymn-intro-step {
   display: flex;
   flex-direction: column;
-  height: 100vh;
   background-color: #00A3EE;
   color: white;
   align-items: center;
   justify-content: center;
+  height: 100vh;
 
   .hymn-stepper--fixed-wrapper {
     margin-bottom: auto;
@@ -28,6 +28,7 @@
         border: 1px solid white;
         margin: 0 4px;
         transition: all 300ms linear;
+
         &.active {
           background-color: white;
           transition: all 300ms linear;
@@ -44,8 +45,33 @@
       border-radius: 100%;
     }
   }
+
   .hymn-stepper--content {
     flex: 1;
+    width: 80%;
+    margin-top: -20%;
+    animation: fadeIn 500ms linear;
+
+    .hymn-stepper--content__title, .hymn-stepper--content__content {
+
+      & > * {
+        margin: 0;
+      }
+
+      h1 {
+        margin: 10px 0;
+        font-size: 1.7em;
+      }
+
+      h3 {
+        font-weight: normal;
+        font-size: 0.9em;
+        opacity: .8;
+      }
+    }
+    .hymn-stepper--content__content {
+      margin: 10% 0;
+    }
   }
 
   .hymn-stepper--next, .hymn-stepper--submit {

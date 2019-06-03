@@ -1,0 +1,22 @@
+.hymn-input-with-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  input {
+
+  }
+}
+
+.hymn-input--label {
+  margin: 10px 0;
+}
+
+.hymn-input--input {
+  min-height: 40px;
+  width: 80%;
+  border-radius: 5px;
+  text-align: center;
+  border: white;
+}
