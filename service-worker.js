@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/hymn-project/precache-manifest.f2fb0e17c54af53ed8d03378f6a28d82.js"
+  "/hymn-project/precache-manifest.bdaca9ff254b8fa0b1314a068a775b0f.js"
 );
 
 workbox.clientsClaim();
