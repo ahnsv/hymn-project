@@ -1,0 +1,421 @@
+repo_name: ahnsv/hymn-project
+report_id: 0d477fe37e988700e937bb55576cae62
+version: 0.1
+repo_type: Public
+timestamp: '2024-05-27T04:22:14+00:00'
+requested_by: ahnsv
+provider: github
+branch: master
+detected_tools_count: 29
+tools:
+- name: JavaScript
+  description: Lightweight, interpreted, object-oriented language with first-class
+    functions
+  website_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source_url: https://github.com/ahnsv/hymn-project
+  detection_source: Repo Metadata
+- name: React
+  description: A JavaScript library for building user interfaces
+  website_url: https://reactjs.org/
+  version: 16.8.6
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript UI Libraries
+  image_url: https://img.stackshare.io/service/1020/OYIaJ1KK.png
+  detection_source_url: https://github.com/ahnsv/hymn-project/blob/master/package-lock.json
+  detection_source: package.json
+  last_updated_by: Humphrey Ahn
+  last_updated_on: 2019-05-18 10:24:27.000000000 Z
+- name: React Router
+  description: A complete routing solution for React.js
+  website_url: https://github.com/rackt/react-router
+  version: 5.0.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: JavaScript Framework Components
+  image_url: https://img.stackshare.io/service/3350/8261421.png
+  detection_source_url: https://github.com/ahnsv/hymn-project/blob/master/package-lock.json
+  detection_source: package.json
+  last_updated_by: Humphrey Ahn
+  last_updated_on: 2019-05-18 10:24:27.000000000 Z
+- name: Sass
+  description: Syntactically Awesome Style Sheets
+  website_url: http://sass-lang.com/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: CSS Pre-processors / Extensions
+  image_url: https://img.stackshare.io/service/1171/jCR2zNJV.png
+  detection_source_url: https://github.com/ahnsv/hymn-project/blob/master/package.json
+  detection_source: package.json
+  last_updated_by: ahnopologetic
+  last_updated_on: 2019-04-08 13:53:55.000000000 Z
+- name: Dotenv
+  description: Loads environment variables from .env for Nodejs projects
+  website_url: https://github.com/motdotla/dotenv
+  license: BSD-2-Clause
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Server Configuration and Automation
+  image_url: https://img.stackshare.io/service/8067/default_90dcb1286af7685c68df319c764b80704df1155b.png
+  detection_source_url: https://github.com/ahnsv/hymn-project/blob/master/package.json
+  detection_source: package.json
+  last_updated_by: Humphrey Ahn
+  last_updated_on: 2019-04-23 12:08:51.000000000 Z
+- name: ESLint
+  description: The fully pluggable JavaScript code quality tool
+  website_url: http://eslint.org/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Code Review
+  image_url: https://img.stackshare.io/service/3337/Q4L7Jncy.jpg
+  detection_source_url: https://github.com/ahnsv/hymn-project/blob/master/package.json
+  detection_source: package.json
+  last_updated_by: ahnopologetic
+  last_updated_on: 2019-04-08 13:53:55.000000000 Z
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/ahnsv/hymn-project
+  detection_source: Repo Metadata
+- name: Prettier
+  description: Prettier is an opinionated code formatter.
+  website_url: https://prettier.io/
+  version: 1.16.4
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Code Review
+  image_url: https://img.stackshare.io/service/7035/default_66f265943abed56bcdbfca1c866a4261b1fbb063.jpg
+  detection_source_url: https://github.com/ahnsv/hymn-project/blob/master/package-lock.json
+  detection_source: package.json
+  last_updated_by: Humphrey Ahn
+  last_updated_on: 2019-04-24 05:42:40.000000000 Z
+- name: Travis CI
+  description: A hosted continuous integration service for open source and private
+    projects
+  website_url: http://travis-ci.com/
+  open_source: false
+  hosted_saas: true
+  category: Build, Test, Deploy
+  sub_category: Continuous Integration
+  image_url: https://img.stackshare.io/service/460/Lu6cGu0z_400x400.png
+  detection_source_url: https://github.com/ahnsv/hymn-project/blob/master/.travis.yml
+  detection_source: ".travis.yml"
+  last_updated_by: ahnopologetic
+  last_updated_on: 2019-04-23 10:53:43.000000000 Z
+- name: npm
+  description: The package manager for JavaScript.
+  website_url: https://www.npmjs.com/
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Front End Package Manager
+  image_url: https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png
+  detection_source_url: https://github.com/ahnsv/hymn-project/blob/master/package.json
+  detection_source: package.json
+  last_updated_by: ahnopologetic
+  last_updated_on: 2019-04-08 13:53:55.000000000 Z
+- name: Lodash
+  description: A JavaScript utility library
+  website_url: https://lodash.com
+  version: 4.17.11
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript Utilities & Libraries
+  image_url: https://img.stackshare.io/service/2438/lodash.png
+  detection_source_url: https://github.com/ahnsv/hymn-project/blob/master/package-lock.json
+  detection_source: package.json
+  last_updated_by: ahnopologetic
+  last_updated_on: 2019-04-12 06:00:17.000000000 Z
+- name: Recompose
+  description: A React utility belt
+  website_url: https://github.com/acdlite/recompose
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript Utilities & Libraries
+  image_url: https://img.stackshare.io/service/7756/no-img-open-source.png
+  detection_source_url: https://github.com/ahnsv/hymn-project/blob/master/package.json
+  detection_source: package.json
+  last_updated_by: ahnopologetic
+  last_updated_on: 2019-04-08 14:14:47.000000000 Z
+- name: date-fns
+  description: Modern JavaScript date utility library
+  website_url: https://date-fns.org/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript Utilities & Libraries
+  image_url: https://img.stackshare.io/service/10865/default_5551fb8853689f607a2bc0d5a09355d5a3d52bf0.png
+  detection_source_url: https://github.com/ahnsv/hymn-project/blob/master/package.json
+  detection_source: package.json
+  last_updated_by: ahnopologetic
+  last_updated_on: 2019-04-08 14:14:47.000000000 Z
+- name: gh-pages
+  description: Publish to a gh-pages branch on GitHub
+  package_url: https://www.npmjs.com/gh-pages
+  version: 2.0.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15967/default_732016a20524708efe7a4c77497fe9bfeea19ba6.png
+  detection_source_url: https://github.com/ahnsv/hymn-project/blob/master/package-lock.json
+  detection_source: package.json
+  last_updated_by: Humphrey Ahn
+  last_updated_on: 2019-05-18 10:24:27.000000000 Z
+  vulnerabilities:
+  - name: tschaub gh-pages vulnerable to prototype pollution
+    cve_id: CVE-2022-37611
+    cve_url: https://github.com/advisories/GHSA-8mmm-9v2q-x3f9
+    detected_date: Apr 23
+    severity: critical
+    first_patched: 5.0.0
+- name: node-sass
+  description: Wrapper around libsass
+  package_url: https://www.npmjs.com/node-sass
+  version: 4.11.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15827/default_db4a7791d2f1174547374b9b587bc10fec088a5a.png
+  detection_source_url: https://github.com/ahnsv/hymn-project/blob/master/package-lock.json
+  detection_source: package.json
+  last_updated_by: ahnopologetic
+  last_updated_on: 2019-04-08 13:53:55.000000000 Z
+  vulnerabilities:
+  - name: Improper Certificate Validation in node-sass
+    cve_id: CVE-2020-24025
+    cve_url: https://github.com/advisories/GHSA-r8f7-9pfq-mjmv
+    detected_date: Feb 10
+    severity: moderate
+    first_patched: 7.0.0
+  - name: Denial of Service in node-sass
+    cve_id:
+    cve_url: https://github.com/advisories/GHSA-9v62-24cr-58cx
+    detected_date: Aug 22
+    severity: moderate
+    first_patched: 4.13.1
+- name: "@storybook/addon-viewport"
+  description: Storybook addon to change the viewport size to mobile
+  package_url: https://www.npmjs.com/@storybook/addon-viewport
+  version: 5.0.6
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16893/default_143d92b1fc944107cf48a3ab42a2a347bf3d91b5.png
+  detection_source_url: https://github.com/ahnsv/hymn-project/blob/master/package-lock.json
+  detection_source: package.json
+  last_updated_by: Humphrey Ahn
+  last_updated_on: 2019-04-23 12:29:20.000000000 Z
+- name: "@storybook/react"
+  description: 'Storybook for React: Develop React Component in isolation with Hot
+    Reloading'
+  package_url: https://www.npmjs.com/@storybook/react
+  version: 5.0.6
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16042/default_72d4237e6719b7d75d0307bf8b5718584fdc3425.png
+  detection_source_url: https://github.com/ahnsv/hymn-project/blob/master/package-lock.json
+  detection_source: package.json
+  last_updated_by: Humphrey Ahn
+  last_updated_on: 2019-05-18 10:24:27.000000000 Z
+- name: "@storybook/storybook-deployer"
+  description: Deploy your storybook as a webapp
+  package_url: https://www.npmjs.com/@storybook/storybook-deployer
+  version: 2.8.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17022/default_0e6669b56ffe7d68d8118eb8e85d024215fd5906.png
+  detection_source_url: https://github.com/ahnsv/hymn-project/blob/master/package-lock.json
+  detection_source: package.json
+  last_updated_by: Humphrey Ahn
+  last_updated_on: 2019-05-16 00:55:27.000000000 Z
+- name: eslint-config-airbnb
+  description: Airbnb's ESLint config, following our styleguide
+  package_url: https://www.npmjs.com/eslint-config-airbnb
+  version: 17.1.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15857/default_7c39a83d4acd952df89b1ebfdb94c8646324fbf1.png
+  detection_source_url: https://github.com/ahnsv/hymn-project/blob/master/package-lock.json
+  detection_source: package.json
+  last_updated_by: Humphrey Ahn
+  last_updated_on: 2019-04-24 05:42:40.000000000 Z
+- name: eslint-config-prettier
+  description: Turns off all rules that are unnecessary or might conflict with Prettier
+  package_url: https://www.npmjs.com/eslint-config-prettier
+  version: 4.1.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15879/default_0b10af8ca19c215f781dc07442e75bdc831089d0.png
+  detection_source_url: https://github.com/ahnsv/hymn-project/blob/master/package-lock.json
+  detection_source: package.json
+  last_updated_by: Humphrey Ahn
+  last_updated_on: 2019-04-24 05:42:40.000000000 Z
+- name: eslint-plugin-prettier
+  description: Runs prettier as an eslint rule
+  package_url: https://www.npmjs.com/eslint-plugin-prettier
+  version: 3.0.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15896/default_6e6e1d6bb189c8bb26c6410618bd597979578f39.png
+  detection_source_url: https://github.com/ahnsv/hymn-project/blob/master/package-lock.json
+  detection_source: package.json
+  last_updated_by: Humphrey Ahn
+  last_updated_on: 2019-05-16 00:55:27.000000000 Z
+- name: eslint-plugin-react
+  description: React specific linting rules for ESLint
+  package_url: https://www.npmjs.com/eslint-plugin-react
+  version: 7.12.4
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15817/default_14fd11531839d935f920b6d55bd6f3528c890ad7.png
+  detection_source_url: https://github.com/ahnsv/hymn-project/blob/master/package-lock.json
+  detection_source: package.json
+  last_updated_by: Humphrey Ahn
+  last_updated_on: 2019-05-18 10:24:27.000000000 Z
+- name: eslint-plugin-react-hooks
+  description: ESLint rules for React Hooks
+  package_url: https://www.npmjs.com/eslint-plugin-react-hooks
+  version: 1.6.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16149/default_1f3a2fc7d882e29a43394ecdf491b8989ea3f0fa.png
+  detection_source_url: https://github.com/ahnsv/hymn-project/blob/master/package-lock.json
+  detection_source: package.json
+  last_updated_by: Humphrey Ahn
+  last_updated_on: 2019-05-18 10:24:27.000000000 Z
+- name: localforage
+  description: Offline storage, improved
+  package_url: https://www.npmjs.com/localforage
+  version: 1.7.3
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17229/default_48f040bdc5f6c639c70bf350f8b8158ede27286c.png
+  detection_source_url: https://github.com/ahnsv/hymn-project/blob/master/package-lock.json
+  detection_source: package.json
+  last_updated_by: Humphrey Ahn
+  last_updated_on: 2019-05-16 00:55:27.000000000 Z
+- name: react-dom
+  description: React package for working with the DOM
+  package_url: https://www.npmjs.com/react-dom
+  version: 16.8.6
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15808/default_14fd11531839d935f920b6d55bd6f3528c890ad7.png
+  detection_source_url: https://github.com/ahnsv/hymn-project/blob/master/package-lock.json
+  detection_source: package.json
+  last_updated_by: Humphrey Ahn
+  last_updated_on: 2019-05-18 10:24:27.000000000 Z
+- name: react-router
+  description: A complete routing library for React
+  package_url: https://www.npmjs.com/react-router
+  version: 5.0.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16058/default_261820f5687b4c88a3e8f95c71b5e8dccd34c1d7.png
+  detection_source_url: https://github.com/ahnsv/hymn-project/blob/master/package-lock.json
+  detection_source: package.json
+  last_updated_by: Humphrey Ahn
+  last_updated_on: 2019-05-18 10:24:27.000000000 Z
+- name: react-router-dom
+  description: DOM bindings for React Router
+  package_url: https://www.npmjs.com/react-router-dom
+  version: 5.0.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16025/default_e25d1fbb04a118c79fb444294461417342bd03bf.png
+  detection_source_url: https://github.com/ahnsv/hymn-project/blob/master/package-lock.json
+  detection_source: package.json
+  last_updated_by: Humphrey Ahn
+  last_updated_on: 2019-05-18 10:24:27.000000000 Z
+- name: react-scripts
+  description: Configuration and scripts for Create React App
+  package_url: https://www.npmjs.com/react-scripts
+  version: 2.1.8
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15985/default_8b5680d4e916298d08363c291a0d6e34c07ceb15.png
+  detection_source_url: https://github.com/ahnsv/hymn-project/blob/master/package-lock.json
+  detection_source: package.json
+  last_updated_by: Humphrey Ahn
+  last_updated_on: 2019-05-18 10:24:27.000000000 Z
+- name: react-transition-group
+  description: A react component toolset for managing animations
+  package_url: https://www.npmjs.com/react-transition-group
+  version: 2.9.0
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16380/default_9ae0e75ed749aca83d89f7e1ccb309be2bfc610e.png
+  detection_source_url: https://github.com/ahnsv/hymn-project/blob/master/package-lock.json
+  detection_source: package.json
+  last_updated_by: Humphrey Ahn
+  last_updated_on: 2019-05-18 10:24:27.000000000 Z
